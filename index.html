@@ -2,32 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="description" content="[Your Name]'s professional portfolio showcasing projects, experience, and skills." />
+  <meta name="keywords" content="portfolio, web developer, professional, projects" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>[Your Name] Portfolio</title>
+  <title>[Your Name] | Portfolio</title>
+  
   <!-- Bootstrap CSS -->
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
     rel="stylesheet"
   />
-  <!-- Custom Styles -->
+  <!-- FontAwesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-ZXx9wmdMKP0LZIDJ2wB+qfeKFYAgANCAIzZb48Wfy4/K6+B2/N8Ivr5SH3nRA1hZ6V8+1JGocStwm+HADTEfNw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+  
   <style>
-    /* Global Styles */
-    html,
-    body {
+    /* CSS Variables for easy theming */
+    :root {
+      --primary-color: #007BFF;
+      --dark-bg: #1a1a1a;
+      --dark-text: #eaeaea;
+      --light-bg: #fff;
+      --light-text: #333;
+    }
+    /* Reset & Base Styles */
+    * {
       margin: 0;
       padding: 0;
-      height: 100%;
-      font-family: Arial, sans-serif;
-      scroll-behavior: smooth;
+      box-sizing: border-box;
     }
-    /* Canvas Styling */
-    #heroCanvas {
-      position: absolute;
-      top: 0;
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--light-text);
+      scroll-behavior: smooth;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+    }
+    /* Navbar */
+    .navbar {
+      transition: background-color 0.3s;
+    }
+    .navbar.bg-custom {
+      background-color: rgba(0, 123, 255, 0.85) !important;
+    }
+    .nav-link:hover,
+    .navbar-brand:hover {
+      color: var(--light-bg) !important;
+    }
+    /* Preloader */
+    #preloader {
+      position: fixed;
       left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--light-bg);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s;
+    }
+    body.dark-mode #preloader {
+      background: var(--dark-bg);
     }
     /* Hero Section */
     #home {
@@ -36,18 +87,51 @@
       overflow: hidden;
       background: #000;
       color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    }
+    #heroCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
     }
     .hero-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      text-align: center;
+      padding-top: 100px;
     }
-    /* Section Padding */
+    .typed-text {
+      font-size: 1.5rem;
+      font-weight: 400;
+      min-height: 40px;
+    }
+    /* Section Styles */
     section {
       padding: 80px 0;
+    }
+    section h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+    section h2::after {
+      content: "";
+      width: 50%;
+      height: 3px;
+      background: var(--primary-color);
+      position: absolute;
+      left: 25%;
+      bottom: -5px;
+    }
+    /* Contact Form */
+    .contact-form input,
+    .contact-form textarea {
+      border: 1px solid #ddd;
+      border-radius: 0.25rem;
     }
     /* Footer */
     footer {
@@ -55,53 +139,112 @@
       text-align: center;
       padding: 20px 0;
     }
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-      .navbar-nav {
-        text-align: center;
-      }
+    body.dark-mode footer {
+      background: #333;
+    }
+    /* Social Media Icons */
+    footer a {
+      color: inherit;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+    footer a:hover {
+      color: var(--primary-color);
+    }
+    /* Back to Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 999;
+    }
+    #backToTop:hover {
+      background: #0056b3;
+    }
+    /* Dark Mode Toggle Button */
+    #darkModeToggle {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+    /* Scroll Down Icon */
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+      z-index: 2;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
     }
   </style>
 </head>
 <body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-custom fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#home">[Your Name]</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button id="darkModeToggle" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
-          <li class="nav-item"><a class="nav-link" href="#location">Where I Am</a></li>
-          <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="#home"><i class="fas fa-home"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about"><i class="fas fa-user"></i> About Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="#location"><i class="fas fa-map-marker-alt"></i> Where I Am</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resume"><i class="fas fa-briefcase"></i> Resume</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
-  
-  <!-- Home Section with Canvas Background -->
-  <section id="home">
+
+  <!-- Hero Section with Canvas and Typed Text -->
+  <section id="home" class="d-flex align-items-center">
     <canvas id="heroCanvas"></canvas>
-    <div class="hero-content container">
-      <h1 class="display-4">Welcome to My Portfolio <span>🚀</span></h1>
-      <p class="lead">Professional. Creative. Passionate. <span>✨</span></p>
+    <div class="container hero-content">
+      <h1>Welcome to My Portfolio <i class="fa-solid fa-rocket"></i></h1>
+      <p class="typed-text"></p>
       <a href="#about" class="btn btn-light btn-lg mt-3">Explore More</a>
+      <div class="scroll-down"><i class="fas fa-angle-down"></i></div>
     </div>
   </section>
-  
+
   <!-- About Me Section -->
   <section id="about" class="container">
     <div class="row align-items-center">
       <div class="col-md-6">
-        <h2>About Me <span>🙂</span></h2>
+        <h2>About Me <i class="fa-solid fa-face-smile"></i></h2>
         <p>
-          Hello! I’m [Your Name], a dedicated professional in the field of
-          [Your Field]. I bring creativity, skill, and passion to every project,
-          always striving for excellence and innovation.
+          Hello! I’m [Your Name], a dedicated professional in [Your Field]. I blend creativity, expertise, and passion in every project to deliver innovative solutions.
         </p>
       </div>
       <div class="col-md-6">
@@ -109,39 +252,38 @@
       </div>
     </div>
   </section>
-  
+
   <!-- Where I Am Section -->
   <section id="location" class="bg-light">
-    <div class="container">
-      <h2 class="text-center">Where I Am <span>🌍</span></h2>
-      <p class="text-center">
-        Currently based in [City, Country]. I work with local and international teams to create innovative solutions.
+    <div class="container text-center">
+      <h2>Where I Am <i class="fa-solid fa-globe"></i></h2>
+      <p>
+        Based in [City, Country], I collaborate with global teams to deliver cutting-edge solutions.
       </p>
     </div>
   </section>
-  
+
   <!-- Resume Section -->
   <section id="resume" class="container">
     <div class="text-center">
-      <h2>Resume <span>💼</span></h2>
+      <h2>Resume <i class="fa-solid fa-briefcase"></i></h2>
       <p>
-        Discover my professional journey, skills, and major accomplishments.
-        Click below to view or download my complete resume.
+        Explore my professional journey, skills, and accomplishments. Click below to view or download my complete resume.
       </p>
       <a href="[link-to-resume.pdf]" class="btn btn-primary" target="_blank">Download Resume</a>
     </div>
   </section>
-  
-  <!-- Contact Me Section -->
+
+  <!-- Contact Section -->
   <section id="contact" class="bg-light">
     <div class="container">
-      <h2 class="text-center">Contact Me <span>✉️</span></h2>
+      <h2 class="text-center">Contact Me <i class="fa-solid fa-envelope"></i></h2>
       <p class="text-center">
-        Have any questions or proposals? Fill out the form below to get in touch.
+        Have questions or proposals? Fill out the form below to get in touch.
       </p>
       <div class="row justify-content-center">
         <div class="col-md-8">
-          <form action="mailto:your.email@example.com" method="post" enctype="text/plain" class="mt-4">
+          <form class="contact-form mt-4" action="mailto:your.email@example.com" method="post" enctype="text/plain">
             <div class="mb-3">
               <input type="text" class="form-control" name="name" placeholder="Your Name" required />
             </div>
@@ -157,23 +299,60 @@
       </div>
     </div>
   </section>
-  
-  <!-- Footer -->
+
+  <!-- Footer with Social Media -->
   <footer>
     <div class="container">
+      <div class="mb-3">
+        <a href="#" class="text-dark"><i class="fab fa-linkedin fa-lg"></i></a>
+        <a href="#" class="text-dark"><i class="fab fa-github fa-lg"></i></a>
+        <a href="#" class="text-dark"><i class="fab fa-twitter fa-lg"></i></a>
+      </div>
       <p>&copy; 2025 [Your Name]. All rights reserved.</p>
     </div>
   </footer>
-  
+
+  <!-- Back to Top Button -->
+  <button id="backToTop"><i class="fa-solid fa-angle-up"></i></button>
+
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom Canvas Animation Script -->
+  
+  <!-- Custom Scripts -->
   <script>
-    // Get the canvas and context
+    // Remove Preloader on page load
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      preloader.style.opacity = '0';
+      setTimeout(() => preloader.style.display = 'none', 500);
+    });
+
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const icon = darkModeToggle.querySelector('i');
+      if (document.body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    });
+
+    // Back-to-Top Button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = (window.pageYOffset > 300) ? 'flex' : 'none';
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Canvas Particle Animation for Background
     const canvas = document.getElementById('heroCanvas');
     const ctx = canvas.getContext('2d');
-
-    // Set canvas dimensions to window size
     function setCanvasSize() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -181,10 +360,8 @@
     setCanvasSize();
     window.addEventListener('resize', setCanvasSize);
 
-    // Create a basic particle system animation
     const particles = [];
     const particleCount = 100;
-
     class Particle {
       constructor(x, y, radius, color, speedX, speedY) {
         this.x = x;
@@ -203,13 +380,11 @@
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
-        // Bounce off the edges
         if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
         if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
         this.draw();
       }
     }
-
     function initParticles() {
       for (let i = 0; i < particleCount; i++) {
         const radius = Math.random() * 2 + 1;
@@ -222,13 +397,47 @@
       }
     }
     initParticles();
-
-    function animate() {
+    function animateParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(particle => particle.update());
-      requestAnimationFrame(animate);
+      particles.forEach(p => p.update());
+      requestAnimationFrame(animateParticles);
     }
-    animate();
+    animateParticles();
+
+    // Typed Text Effect in Hero Section
+    const typedTextElement = document.querySelector('.typed-text');
+    const typedPhrases = [
+      "Professional. Creative. Passionate.",
+      "Innovator in [Your Field].",
+      "Always learning, always growing."
+    ];
+    let typIndex = 0;
+    let charIndex = 0;
+    let currentPhrase = "";
+    let isDeleting = false;
+    function type() {
+      if (typIndex < typedPhrases.length) {
+        if (!isDeleting && charIndex <= typedPhrases[typIndex].length) {
+          currentPhrase = typedPhrases[typIndex].substring(0, charIndex++);
+          typedTextElement.textContent = currentPhrase;
+          setTimeout(type, 150);
+        } else if (isDeleting && charIndex >= 0) {
+          currentPhrase = typedPhrases[typIndex].substring(0, charIndex--);
+          typedTextElement.textContent = currentPhrase;
+          setTimeout(type, 100);
+        }
+        if (charIndex === typedPhrases[typIndex].length) {
+          isDeleting = true;
+          setTimeout(type, 1000);
+        }
+        if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          typIndex = (typIndex + 1) % typedPhrases.length;
+          setTimeout(type, 500);
+        }
+      }
+    }
+    type();
   </script>
 </body>
 </html>
