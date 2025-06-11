@@ -24,14 +24,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
         integrity="sha512-ZXx9wmdMKP0LZIDJ2wB+qfeKFYAgANCAIzZb48Wfy4/K6+B2/N8Ivr5SH3nRA1hZ6V8+1JGocStwm+HADTEfNw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- AOS CSS -->
+  <!-- AOS (Animate On Scroll) CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
   
   <!-- Custom Styles -->
   <style>
-    /* --- CSS Variables for Easy Theming --- */
+    /* CSS Variables for Easy Theming */
     :root {
       --primary-color: #007BFF;
       --secondary-color: #6c757d;
@@ -40,7 +40,7 @@
       --dark-bg: #1a1a1a;
       --dark-text: #eaeaea;
     }
-    /* --- Reset & Base Styles --- */
+    /* Reset & Base Styles */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Montserrat', sans-serif;
@@ -55,7 +55,7 @@
     }
     a { color: inherit; text-decoration: none; }
     
-    /* --- Preloader --- */
+    /* Preloader */
     #preloader {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background: var(--light-bg);
@@ -67,12 +67,12 @@
     }
     body.dark-mode #preloader { background: var(--dark-bg); }
     
-    /* --- Navbar --- */
+    /* Navbar */
     .navbar { transition: background-color 0.3s; }
     .navbar.bg-custom { background: rgba(0, 123, 255, 0.85) !important; }
     .nav-link:hover, .navbar-brand:hover { color: var(--light-bg) !important; }
     
-    /* --- Hero Section --- */
+    /* Hero Section */
     #hero {
       position: relative;
       height: 100vh;
@@ -95,8 +95,14 @@
       font-size: 1.5rem; margin-bottom: 20px; min-height: 40px;
       opacity: 0; animation: fadeInUp 1s forwards 0.5s;
     }
-    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeInUp   { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
     .scroll-down {
       position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
       font-size: 2rem; color: #fff; cursor: pointer;
@@ -107,7 +113,7 @@
       50% { transform: translateX(-50%) translateY(-10px); }
     }
     
-    /* --- Section Styles --- */
+    /* Section Styles */
     section { padding: 80px 0; }
     section h2 {
       font-size: 2rem; text-align: center; margin-bottom: 20px;
@@ -119,19 +125,19 @@
       left: 25%; bottom: -5px;
     }
     
-    /* --- Fade-in Utility for Elements --- */
+    /* Fade-In Sections */
     .fade-in-section {
       opacity: 0; transform: translateY(20px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
     .fade-in-section.visible { opacity: 1; transform: none; }
     
-    /* --- Skills & Progress Bars --- */
+    /* Skills & Progress Bars */
     .skill { margin-bottom: 20px; }
     .progress { height: 20px; }
     .progress-bar { line-height: 20px; transition: width 1.5s ease-in-out; }
     
-    /* --- Projects & Filter Bar --- */
+    /* Projects & Filter Bar */
     .filter-bar { text-align: center; margin-bottom: 40px; }
     .filter-btn {
       margin: 0 10px; padding: 10px 20px;
@@ -144,24 +150,26 @@
     .project-card { transition: transform 0.3s, box-shadow 0.3s; }
     .project-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
     
-    /* --- Contact Form --- */
+    /* Contact Form */
     .contact-form input, .contact-form textarea {
       border: 1px solid #ddd; border-radius: 0.25rem;
     }
     
-    /* --- Footer --- */
+    /* Footer */
     footer {
       background: var(--light-bg);
       text-align: center; padding: 20px 0;
     }
     body.dark-mode footer { background: var(--dark-bg); }
-    footer a { margin: 0 10px; transition: color 0.3s; }
+    footer a {
+      margin: 0 10px; transition: color 0.3s;
+    }
     footer a:hover { color: var(--primary-color); }
     
-    /* --- Back to Top Button --- */
+    /* Back to Top Button */
     #backToTop {
       position: fixed; bottom: 30px; right: 30px;
       background: var(--primary-color); color: #fff;
@@ -172,7 +180,7 @@
     }
     #backToTop:hover { background: #0056b3; }
     
-    /* --- Dark Mode Toggle Button --- */
+    /* Dark Mode Toggle Button */
     #darkModeToggle {
       background: none; border: none;
       color: #fff; font-size: 1.2rem;
@@ -181,14 +189,14 @@
   </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="80">
-  <!-- --- Preloader --- -->
+  <!-- Preloader -->
   <div id="preloader" role="alert" aria-live="polite">
     <div class="spinner-border text-primary" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
   
-  <!-- --- Navbar --- -->
+  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-custom fixed-top" data-aos="fade-down" aria-label="Main Navigation">
     <div class="container">
       <a class="navbar-brand" href="#hero">[Your Name]</a>
@@ -213,7 +221,7 @@
     </div>
   </nav>
   
-  <!-- --- Hero Section --- -->
+  <!-- Hero Section -->
   <section id="hero">
     <canvas id="heroCanvas" aria-hidden="true"></canvas>
     <div class="container hero-content" data-aos="fade-up">
@@ -224,7 +232,7 @@
     </div>
   </section>
   
-  <!-- --- About Section --- -->
+  <!-- About Section -->
   <section id="about" class="container" data-aos="fade-up">
     <div class="row align-items-center fade-in-section">
       <div class="col-md-6">
@@ -238,7 +246,7 @@
     </div>
   </section>
   
-  <!-- --- Skills Section --- -->
+  <!-- Skills Section -->
   <section id="skills" class="bg-light" data-aos="fade-up">
     <div class="container">
       <h2>Skills <i class="fa-solid fa-chart-line"></i></h2>
@@ -275,7 +283,7 @@
     </div>
   </section>
   
-  <!-- --- Projects Section with Filter --- -->
+  <!-- Projects Section with Filter Bar -->
   <section id="projects" class="container" data-aos="fade-up">
     <h2>Projects <i class="fa-solid fa-folder-open"></i></h2>
     <div class="filter-bar mb-4">
@@ -321,7 +329,7 @@
     </div>
   </section>
   
-  <!-- --- Project Modals --- -->
+  <!-- Project Modals -->
   <!-- Modal for Project 1 -->
   <div class="modal fade" id="projectModal1" tabindex="-1" aria-labelledby="projectModal1Label" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -377,7 +385,7 @@
     </div>
   </div>
   
-  <!-- --- Testimonials Section --- -->
+  <!-- Testimonials Section -->
   <section id="testimonials" class="bg-light" data-aos="fade-up">
     <div class="container">
       <h2>Testimonials <i class="fa-solid fa-comments"></i></h2>
@@ -417,7 +425,7 @@
     </div>
   </section>
   
-  <!-- --- Resume Section --- -->
+  <!-- Resume Section -->
   <section id="resume" class="container" data-aos="fade-up">
     <div class="text-center">
       <h2>Resume <i class="fa-solid fa-file-alt"></i></h2>
@@ -426,7 +434,7 @@
     </div>
   </section>
   
-  <!-- --- Contact Section --- -->
+  <!-- Contact Section -->
   <section id="contact" class="bg-light" data-aos="fade-up">
     <div class="container">
       <h2 class="text-center">Contact Me <i class="fa-solid fa-envelope"></i></h2>
@@ -450,7 +458,7 @@
     </div>
   </section>
   
-  <!-- --- Footer --- -->
+  <!-- Footer -->
   <footer data-aos="fade-up">
     <div class="container">
       <div class="mb-3">
@@ -462,14 +470,17 @@
     </div>
   </footer>
   
-  <!-- --- Back to Top Button --- -->
+  <!-- Back to Top Button -->
   <button id="backToTop" aria-label="Back to Top"><i class="fa-solid fa-angle-up"></i></button>
   
-  <!-- --- Scripts --- -->
-  <!-- Bootstrap Bundle with Popper (defered) -->
+  <!-- Scripts -->
+  <!-- Bootstrap Bundle with Popper (deferred) -->
   <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- AOS Library (defered) -->
+  <!-- AOS Library (deferred) -->
   <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- GSAP & ScrollTrigger (deferred) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   
   <!-- Custom Scripts -->
   <script defer>
@@ -489,7 +500,7 @@
       }
     });
     
-    // Dark Mode Toggle with localStorage persistence
+    // Dark Mode Toggle with Persistence
     const darkModeToggle = document.getElementById('darkModeToggle');
     darkModeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
@@ -503,7 +514,7 @@
       }
     });
     
-    // Back-to-Top Button Functionality
+    // Back-to-Top Button
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       backToTop.style.display = window.pageYOffset > 300 ? 'flex' : 'none';
@@ -593,6 +604,13 @@
     }
     type();
     
+    // GSAP Animations with ScrollTrigger for Enhanced Entrance Effects
+    window.addEventListener("DOMContentLoaded", () => {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from(".hero-content h1", { duration: 1.5, opacity: 0, y: -50, ease: "bounce.out" });
+      gsap.from(".hero-content .typed-text", { duration: 1.5, opacity: 0, y: 50, delay: 0.5 });
+    });
+    
     // Filter Projects Functionality
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectItems = document.querySelectorAll('.project-item');
@@ -610,7 +628,7 @@
     });
   </script>
   
-  <!-- --- Service Worker Registration for PWA (Optional) --- -->
+  <!-- Service Worker Registration for PWA (Optional) -->
   <script defer>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -619,7 +637,7 @@
             console.log('Service Worker registered with scope:', registration.scope);
           })
           .catch(err => {
-            console.log('Service Worker registration failed:', err);
+            console.error('Service Worker registration failed:', err);
           });
       });
     }
