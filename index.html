@@ -2,30 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- SEO & Social Meta Tags -->
   <meta name="description" content="[Your Name]'s professional portfolio showcasing projects, experience, and skills." />
-  <meta name="keywords" content="portfolio, web developer, professional, projects" />
+  <meta name="keywords" content="portfolio, professional, web developer, projects" />
+  <meta property="og:title" content="[Your Name] | Portfolio" />
+  <meta property="og:description" content="[Your Name]'s professional portfolio showcasing projects, experience, and skills." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="[Link-to-Your-Image]" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="[Your Name] | Portfolio" />
+  <meta name="twitter:description" content="[Your Name]'s professional portfolio showcasing projects, experience, and skills." />
+  <meta name="twitter:image" content="[Link-to-Your-Image]" />
+  
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>[Your Name] | Portfolio</title>
   
   <!-- Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <!-- FontAwesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
     integrity="sha512-ZXx9wmdMKP0LZIDJ2wB+qfeKFYAgANCAIzZb48Wfy4/K6+B2/N8Ivr5SH3nRA1hZ6V8+1JGocStwm+HADTEfNw=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   
+  <!-- Custom Styles -->
   <style>
     /* CSS Variables for easy theming */
     :root {
@@ -36,11 +39,7 @@
       --light-text: #333;
     }
     /* Reset & Base Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Montserrat', sans-serif;
       background-color: var(--light-bg);
@@ -52,6 +51,20 @@
       background-color: var(--dark-bg);
       color: var(--dark-text);
     }
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--light-bg);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.4s ease-out;
+    }
+    body.dark-mode #preloader {
+      background: var(--dark-bg);
+    }
     /* Navbar */
     .navbar {
       transition: background-color 0.3s;
@@ -59,26 +72,15 @@
     .navbar.bg-custom {
       background-color: rgba(0, 123, 255, 0.85) !important;
     }
-    .nav-link:hover,
-    .navbar-brand:hover {
-      color: var(--light-bg) !important;
-    }
-    /* Preloader */
-    #preloader {
-      position: fixed;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      background: var(--light-bg);
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.3s;
-    }
-    body.dark-mode #preloader {
-      background: var(--dark-bg);
+    .nav-link:hover, .navbar-brand:hover { color: var(--light-bg) !important; }
+    /* Dark Mode Toggle Button */
+    #darkModeToggle {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-right: 20px;
     }
     /* Hero Section */
     #home {
@@ -89,11 +91,8 @@
       color: #fff;
     }
     #heroCanvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
       z-index: 0;
     }
     .hero-content {
@@ -107,10 +106,23 @@
       font-weight: 400;
       min-height: 40px;
     }
-    /* Section Styles */
-    section {
-      padding: 80px 0;
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+      z-index: 2;
     }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+    /* Sections */
+    section { padding: 80px 0; }
     section h2 {
       font-size: 2rem;
       text-align: center;
@@ -139,19 +151,14 @@
       text-align: center;
       padding: 20px 0;
     }
-    body.dark-mode footer {
-      background: #333;
-    }
-    /* Social Media Icons */
+    body.dark-mode footer { background: #333; }
     footer a {
       color: inherit;
       margin: 0 10px;
       transition: color 0.3s;
     }
-    footer a:hover {
-      color: var(--primary-color);
-    }
-    /* Back to Top Button */
+    footer a:hover { color: var(--primary-color); }
+    /* Back-to-Top Button */
     #backToTop {
       position: fixed;
       bottom: 30px;
@@ -167,35 +174,9 @@
       justify-content: center;
       cursor: pointer;
       z-index: 999;
+      transition: background 0.3s;
     }
-    #backToTop:hover {
-      background: #0056b3;
-    }
-    /* Dark Mode Toggle Button */
-    #darkModeToggle {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.2rem;
-      cursor: pointer;
-      margin-right: 20px;
-    }
-    /* Scroll Down Icon */
-    .scroll-down {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2rem;
-      color: #fff;
-      cursor: pointer;
-      animation: bounce 2s infinite;
-      z-index: 2;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(-10px); }
-    }
+    #backToTop:hover { background: #0056b3; }
   </style>
 </head>
 <body>
@@ -205,7 +186,7 @@
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
-
+  
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-custom fixed-top">
     <div class="container">
@@ -226,20 +207,20 @@
       </div>
     </div>
   </nav>
-
-  <!-- Hero Section with Canvas and Typed Text -->
-  <section id="home" class="d-flex align-items-center">
+  
+  <!-- Hero Section with Animated Canvas and Typed Text -->
+  <section id="home" data-aos="fade">
     <canvas id="heroCanvas"></canvas>
     <div class="container hero-content">
-      <h1>Welcome to My Portfolio <i class="fa-solid fa-rocket"></i></h1>
-      <p class="typed-text"></p>
-      <a href="#about" class="btn btn-light btn-lg mt-3">Explore More</a>
-      <div class="scroll-down"><i class="fas fa-angle-down"></i></div>
+      <h1 data-aos="fade-up">Welcome to My Portfolio <i class="fa-solid fa-rocket"></i></h1>
+      <p class="typed-text" data-aos="fade-up" data-aos-delay="300"></p>
+      <a href="#about" class="btn btn-light btn-lg mt-3" data-aos="fade-up" data-aos-delay="600">Explore More</a>
+      <div class="scroll-down" data-aos="fade-up" data-aos-delay="900"><i class="fas fa-angle-down"></i></div>
     </div>
   </section>
-
+  
   <!-- About Me Section -->
-  <section id="about" class="container">
+  <section id="about" class="container" data-aos="fade-up">
     <div class="row align-items-center">
       <div class="col-md-6">
         <h2>About Me <i class="fa-solid fa-face-smile"></i></h2>
@@ -248,23 +229,29 @@
         </p>
       </div>
       <div class="col-md-6">
-        <img src="https://via.placeholder.com/500x300" alt="[Your Name]" class="img-fluid rounded" />
+        <img src="https://via.placeholder.com/500x300" alt="[Your Name]" class="img-fluid rounded" loading="lazy"/>
       </div>
     </div>
   </section>
-
+  
   <!-- Where I Am Section -->
-  <section id="location" class="bg-light">
+  <section id="location" class="bg-light" data-aos="fade-up">
     <div class="container text-center">
       <h2>Where I Am <i class="fa-solid fa-globe"></i></h2>
       <p>
-        Based in [City, Country], I collaborate with global teams to deliver cutting-edge solutions.
+        Based in [City, Country]. I collaborate with global teams to deliver cutting-edge solutions.
       </p>
+      <!-- Optional: Embed a map via iframe if desired -->
+      <!--
+      <div class="map-responsive my-4">
+        <iframe src="[Google-Map-Embed-Link]" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+      -->
     </div>
   </section>
-
+  
   <!-- Resume Section -->
-  <section id="resume" class="container">
+  <section id="resume" class="container" data-aos="fade-up">
     <div class="text-center">
       <h2>Resume <i class="fa-solid fa-briefcase"></i></h2>
       <p>
@@ -273,9 +260,9 @@
       <a href="[link-to-resume.pdf]" class="btn btn-primary" target="_blank">Download Resume</a>
     </div>
   </section>
-
+  
   <!-- Contact Section -->
-  <section id="contact" class="bg-light">
+  <section id="contact" class="bg-light" data-aos="fade-up">
     <div class="container">
       <h2 class="text-center">Contact Me <i class="fa-solid fa-envelope"></i></h2>
       <p class="text-center">
@@ -285,10 +272,10 @@
         <div class="col-md-8">
           <form class="contact-form mt-4" action="mailto:your.email@example.com" method="post" enctype="text/plain">
             <div class="mb-3">
-              <input type="text" class="form-control" name="name" placeholder="Your Name" required />
+              <input type="text" class="form-control" name="name" placeholder="Your Name" required>
             </div>
             <div class="mb-3">
-              <input type="email" class="form-control" name="email" placeholder="Your Email" required />
+              <input type="email" class="form-control" name="email" placeholder="Your Email" required>
             </div>
             <div class="mb-3">
               <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
@@ -299,9 +286,9 @@
       </div>
     </div>
   </section>
-
-  <!-- Footer with Social Media -->
-  <footer>
+  
+  <!-- Footer with Social Media Icons -->
+  <footer data-aos="fade">
     <div class="container">
       <div class="mb-3">
         <a href="#" class="text-dark"><i class="fab fa-linkedin fa-lg"></i></a>
@@ -311,133 +298,28 @@
       <p>&copy; 2025 [Your Name]. All rights reserved.</p>
     </div>
   </footer>
-
-  <!-- Back to Top Button -->
+  
+  <!-- Back-to-Top Button -->
   <button id="backToTop"><i class="fa-solid fa-angle-up"></i></button>
-
+  
+  <!-- Scripts -->
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <!-- Custom Scripts -->
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Remove Preloader on page load
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+    
+    // Remove Preloader when the page loads
     window.addEventListener('load', () => {
       const preloader = document.getElementById('preloader');
       preloader.style.opacity = '0';
       setTimeout(() => preloader.style.display = 'none', 500);
-    });
-
-    // Dark Mode Toggle
-    const darkModeToggle = document.getElementById('darkModeToggle');
-    darkModeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      const icon = darkModeToggle.querySelector('i');
-      if (document.body.classList.contains('dark-mode')) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-      } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-      }
-    });
-
-    // Back-to-Top Button
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      backToTop.style.display = (window.pageYOffset > 300) ? 'flex' : 'none';
-    });
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Canvas Particle Animation for Background
-    const canvas = document.getElementById('heroCanvas');
-    const ctx = canvas.getContext('2d');
-    function setCanvasSize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    setCanvasSize();
-    window.addEventListener('resize', setCanvasSize);
-
-    const particles = [];
-    const particleCount = 100;
-    class Particle {
-      constructor(x, y, radius, color, speedX, speedY) {
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
-        this.color = color;
-        this.speedX = speedX;
-        this.speedY = speedY;
-      }
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-      }
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-        this.draw();
-      }
-    }
-    function initParticles() {
-      for (let i = 0; i < particleCount; i++) {
-        const radius = Math.random() * 2 + 1;
-        const x = Math.random() * canvas.width;
-        const y = Math.random() * canvas.height;
-        const speedX = (Math.random() - 0.5) * 1.5;
-        const speedY = (Math.random() - 0.5) * 1.5;
-        const color = 'rgba(255, 255, 255, 0.8)';
-        particles.push(new Particle(x, y, radius, color, speedX, speedY));
-      }
-    }
-    initParticles();
-    function animateParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => p.update());
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
-
-    // Typed Text Effect in Hero Section
-    const typedTextElement = document.querySelector('.typed-text');
-    const typedPhrases = [
-      "Professional. Creative. Passionate.",
-      "Innovator in [Your Field].",
-      "Always learning, always growing."
-    ];
-    let typIndex = 0;
-    let charIndex = 0;
-    let currentPhrase = "";
-    let isDeleting = false;
-    function type() {
-      if (typIndex < typedPhrases.length) {
-        if (!isDeleting && charIndex <= typedPhrases[typIndex].length) {
-          currentPhrase = typedPhrases[typIndex].substring(0, charIndex++);
-          typedTextElement.textContent = currentPhrase;
-          setTimeout(type, 150);
-        } else if (isDeleting && charIndex >= 0) {
-          currentPhrase = typedPhrases[typIndex].substring(0, charIndex--);
-          typedTextElement.textContent = currentPhrase;
-          setTimeout(type, 100);
-        }
-        if (charIndex === typedPhrases[typIndex].length) {
-          isDeleting = true;
-          setTimeout(type, 1000);
-        }
-        if (isDeleting && charIndex === 0) {
-          isDeleting = false;
-          typIndex = (typIndex + 1) % typedPhrases.length;
-          setTimeout(type, 500);
-        }
-      }
-    }
-    type();
-  </script>
-</body>
-</html>
+      
+      // Check for persisted theme in localStorage
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark-mode');
+        darkModeToggle.querySelector('i').classList.replace('fa
