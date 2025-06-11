@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- SEO & Social Meta Tags -->
-  <meta name="description" content="[Your Name]'s professional portfolio showcasing projects, experience, and skills." />
+  <!-- Advanced SEO & Social Meta Tags -->
+  <meta name="description" content="[Your Name]'s professional portfolio showcasing projects, skills, and experience." />
   <meta name="keywords" content="portfolio, web developer, professional, projects, skills, testimonials" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#007BFF" />
@@ -14,19 +14,24 @@
   <meta name="twitter:card" content="summary_large_image" />
   <title>[Your Name] | Portfolio</title>
   
+  <!-- PWA Manifest & Apple Touch Icon -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icon.png" />
+  
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- FontAwesome CSS -->
+  <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
         integrity="sha512-ZXx9wmdMKP0LZIDJ2wB+qfeKFYAgANCAIzZb48Wfy4/K6+B2/N8Ivr5SH3nRA1hZ6V8+1JGocStwm+HADTEfNw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- AOS (Animate On Scroll) CSS -->
+  <!-- AOS CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
   
+  <!-- Custom Styles -->
   <style>
-    /* CSS Variables per agevolare la personalizzazione */
+    /* --- CSS Variables for Easy Theming --- */
     :root {
       --primary-color: #007BFF;
       --secondary-color: #6c757d;
@@ -35,7 +40,7 @@
       --dark-bg: #1a1a1a;
       --dark-text: #eaeaea;
     }
-    /* Reset e stili base */
+    /* --- Reset & Base Styles --- */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Montserrat', sans-serif;
@@ -50,10 +55,9 @@
     }
     a { color: inherit; text-decoration: none; }
     
-    /* Preloader */
+    /* --- Preloader --- */
     #preloader {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background: var(--light-bg);
       z-index: 10000;
       display: flex;
@@ -63,13 +67,12 @@
     }
     body.dark-mode #preloader { background: var(--dark-bg); }
     
-    /* Navbar */
+    /* --- Navbar --- */
     .navbar { transition: background-color 0.3s; }
     .navbar.bg-custom { background: rgba(0, 123, 255, 0.85) !important; }
-    .nav-link:hover,
-    .navbar-brand:hover { color: var(--light-bg) !important; }
+    .nav-link:hover, .navbar-brand:hover { color: var(--light-bg) !important; }
     
-    /* Hero Section */
+    /* --- Hero Section --- */
     #hero {
       position: relative;
       height: 100vh;
@@ -77,177 +80,115 @@
       background: #000;
     }
     #heroCanvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; z-index: 0;
     }
     .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding-top: 120px;
+      position: relative; z-index: 2;
+      text-align: center; padding-top: 120px;
     }
     .hero-content h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
+      font-size: 3rem; margin-bottom: 20px;
       animation: fadeInDown 1s forwards;
     }
     .typed-text {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      min-height: 40px;
-      opacity: 0;
-      animation: fadeInUp 1s forwards 0.5s;
+      font-size: 1.5rem; margin-bottom: 20px; min-height: 40px;
+      opacity: 0; animation: fadeInUp 1s forwards 0.5s;
     }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInUp   { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .scroll-down {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2rem;
-      color: #fff;
-      cursor: pointer;
-      animation: bounce 2s infinite;
-      z-index: 2;
+      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+      font-size: 2rem; color: #fff; cursor: pointer;
+      animation: bounce 2s infinite; z-index: 2;
     }
     @keyframes bounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50% { transform: translateX(-50%) translateY(-10px); }
     }
     
-    /* Sezioni generali */
+    /* --- Section Styles --- */
     section { padding: 80px 0; }
     section h2 {
-      font-size: 2rem;
-      text-align: center;
-      margin-bottom: 20px;
-      position: relative;
-      display: inline-block;
+      font-size: 2rem; text-align: center; margin-bottom: 20px;
+      position: relative; display: inline-block;
     }
     section h2::after {
-      content: "";
-      width: 50%;
-      height: 3px;
-      background: var(--primary-color);
-      position: absolute;
-      left: 25%;
-      bottom: -5px;
+      content: ""; width: 50%; height: 3px;
+      background: var(--primary-color); position: absolute;
+      left: 25%; bottom: -5px;
     }
     
-    /* Fade-in per sezioni interattive */
+    /* --- Fade-in Utility for Elements --- */
     .fade-in-section {
-      opacity: 0;
-      transform: translateY(20px);
+      opacity: 0; transform: translateY(20px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
-    .fade-in-section.visible {
-      opacity: 1;
-      transform: none;
-    }
+    .fade-in-section.visible { opacity: 1; transform: none; }
     
-    /* Skills & Progress Bars */
+    /* --- Skills & Progress Bars --- */
     .skill { margin-bottom: 20px; }
     .progress { height: 20px; }
     .progress-bar { line-height: 20px; transition: width 1.5s ease-in-out; }
     
-    /* Projects: Aggiunta di un Filter Bar */
-    .filter-bar {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+    /* --- Projects & Filter Bar --- */
+    .filter-bar { text-align: center; margin-bottom: 40px; }
     .filter-btn {
-      margin: 0 10px;
-      padding: 10px 20px;
+      margin: 0 10px; padding: 10px 20px;
       border: 1px solid var(--primary-color);
       border-radius: 20px;
-      background: transparent;
-      color: var(--primary-color);
-      cursor: pointer;
-      transition: background 0.3s, color 0.3s;
+      background: transparent; color: var(--primary-color);
+      cursor: pointer; transition: background 0.3s, color 0.3s;
     }
-    .filter-btn.active,
-    .filter-btn:hover {
-      background: var(--primary-color);
-      color: #fff;
-    }
-    .project-card {
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+    .filter-btn.active, .filter-btn:hover { background: var(--primary-color); color: #fff; }
+    .project-card { transition: transform 0.3s, box-shadow 0.3s; }
     .project-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     }
     
-    /* Contact Form */
-    .contact-form input,
-    .contact-form textarea {
-      border: 1px solid #ddd;
-      border-radius: 0.25rem;
+    /* --- Contact Form --- */
+    .contact-form input, .contact-form textarea {
+      border: 1px solid #ddd; border-radius: 0.25rem;
     }
     
-    /* Footer */
+    /* --- Footer --- */
     footer {
       background: var(--light-bg);
-      text-align: center;
-      padding: 20px 0;
+      text-align: center; padding: 20px 0;
     }
     body.dark-mode footer { background: var(--dark-bg); }
-    footer a {
-      margin: 0 10px;
-      transition: color 0.3s;
-    }
+    footer a { margin: 0 10px; transition: color 0.3s; }
     footer a:hover { color: var(--primary-color); }
     
-    /* Back to Top Button */
+    /* --- Back to Top Button --- */
     #backToTop {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: var(--primary-color);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 999;
+      position: fixed; bottom: 30px; right: 30px;
+      background: var(--primary-color); color: #fff;
+      border: none; border-radius: 50%;
+      width: 45px; height: 45px; display: none;
+      align-items: center; justify-content: center;
+      cursor: pointer; z-index: 999;
     }
     #backToTop:hover { background: #0056b3; }
     
-    /* Dark Mode Toggle Button */
+    /* --- Dark Mode Toggle Button --- */
     #darkModeToggle {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.2rem;
-      cursor: pointer;
-      margin-right: 20px;
+      background: none; border: none;
+      color: #fff; font-size: 1.2rem;
+      cursor: pointer; margin-right: 20px;
     }
   </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="80">
-  <!-- Preloader -->
-  <div id="preloader">
+  <!-- --- Preloader --- -->
+  <div id="preloader" role="alert" aria-live="polite">
     <div class="spinner-border text-primary" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
   
-  <!-- Navbar -->
+  <!-- --- Navbar --- -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-custom fixed-top" data-aos="fade-down" aria-label="Main Navigation">
     <div class="container">
       <a class="navbar-brand" href="#hero">[Your Name]</a>
@@ -272,7 +213,7 @@
     </div>
   </nav>
   
-  <!-- Hero Section con Canvas e Typed Text -->
+  <!-- --- Hero Section --- -->
   <section id="hero">
     <canvas id="heroCanvas" aria-hidden="true"></canvas>
     <div class="container hero-content" data-aos="fade-up">
@@ -283,12 +224,12 @@
     </div>
   </section>
   
-  <!-- About Section -->
+  <!-- --- About Section --- -->
   <section id="about" class="container" data-aos="fade-up">
     <div class="row align-items-center fade-in-section">
       <div class="col-md-6">
         <h2>About Me <i class="fa-solid fa-face-smile"></i></h2>
-        <p>Hello! I’m [Your Name], a dedicated professional in [Your Field]. I combine creativity, technical expertise, and a passion for innovation to deliver impactful solutions. I thrive in collaborative environments and continuously push the boundaries of what's possible.</p>
+        <p>Hello! I’m [Your Name], a dedicated professional in [Your Field]. I combine creativity, technical expertise, and passion to deliver impactful solutions. I thrive in collaborative environments and continuously push the boundaries of what's possible.</p>
         <a href="[link-to-vcard.vcf]" class="btn btn-outline-primary mt-3">Download vCard</a>
       </div>
       <div class="col-md-6">
@@ -297,7 +238,7 @@
     </div>
   </section>
   
-  <!-- Skills Section -->
+  <!-- --- Skills Section --- -->
   <section id="skills" class="bg-light" data-aos="fade-up">
     <div class="container">
       <h2>Skills <i class="fa-solid fa-chart-line"></i></h2>
@@ -334,45 +275,45 @@
     </div>
   </section>
   
-  <!-- Projects Section with Filter Bar -->
+  <!-- --- Projects Section with Filter --- -->
   <section id="projects" class="container" data-aos="fade-up">
     <h2>Projects <i class="fa-solid fa-folder-open"></i></h2>
     <div class="filter-bar mb-4">
       <button class="filter-btn active" data-filter="all">All</button>
       <button class="filter-btn" data-filter="web">Web Development</button>
       <button class="filter-btn" data-filter="design">Design</button>
-      <!-- Aggiungi altri filtri se necessario -->
+      <!-- Add more filter buttons as needed -->
     </div>
     <div class="row" id="projectContainer">
-      <!-- Project Card 1 (categoria: web) -->
+      <!-- Project Card 1 (Category: web) -->
       <div class="col-md-4 project-item" data-category="web">
         <div class="card project-card mb-4">
           <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Project One" loading="lazy">
           <div class="card-body">
             <h5 class="card-title">Project One</h5>
-            <p class="card-text">Brief overview of the project with key technologies and achievements.</p>
+            <p class="card-text">Brief overview with key technologies and achievements.</p>
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal1">Learn More</button>
           </div>
         </div>
       </div>
-      <!-- Project Card 2 (categoria: design) -->
+      <!-- Project Card 2 (Category: design) -->
       <div class="col-md-4 project-item" data-category="design">
         <div class="card project-card mb-4">
           <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Project Two" loading="lazy">
           <div class="card-body">
             <h5 class="card-title">Project Two</h5>
-            <p class="card-text">Brief overview of the project with key technologies and achievements.</p>
+            <p class="card-text">Brief overview with key technologies and achievements.</p>
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal2">Learn More</button>
           </div>
         </div>
       </div>
-      <!-- Project Card 3 (categoria: web) -->
+      <!-- Project Card 3 (Category: web) -->
       <div class="col-md-4 project-item" data-category="web">
         <div class="card project-card mb-4">
           <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Project Three" loading="lazy">
           <div class="card-body">
             <h5 class="card-title">Project Three</h5>
-            <p class="card-text">Brief overview of the project with key technologies and achievements.</p>
+            <p class="card-text">Brief overview with key technologies and achievements.</p>
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal3">Learn More</button>
           </div>
         </div>
@@ -380,7 +321,7 @@
     </div>
   </section>
   
-  <!-- Project Modals -->
+  <!-- --- Project Modals --- -->
   <!-- Modal for Project 1 -->
   <div class="modal fade" id="projectModal1" tabindex="-1" aria-labelledby="projectModal1Label" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -390,7 +331,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Detailed overview of Project One including challenges, implemented solutions, key features, and results.
+          Detailed overview of Project One—including challenges, solutions, and results.
         </div>
         <div class="modal-footer">
           <a href="#" class="btn btn-primary" target="_blank">View Live</a>
@@ -408,7 +349,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Detailed overview of Project Two including challenges, implemented solutions, key features, and results.
+          Detailed overview of Project Two—including challenges, solutions, and results.
         </div>
         <div class="modal-footer">
           <a href="#" class="btn btn-primary" target="_blank">View Live</a>
@@ -426,7 +367,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Detailed overview of Project Three including challenges, implemented solutions, key features, and results.
+          Detailed overview of Project Three—including challenges, solutions, and results.
         </div>
         <div class="modal-footer">
           <a href="#" class="btn btn-primary" target="_blank">View Live</a>
@@ -436,30 +377,30 @@
     </div>
   </div>
   
-  <!-- Testimonials Section -->
+  <!-- --- Testimonials Section --- -->
   <section id="testimonials" class="bg-light" data-aos="fade-up">
     <div class="container">
       <h2>Testimonials <i class="fa-solid fa-comments"></i></h2>
-      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" aria-label="Testimonials">
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" aria-label="Testimonials Carousel">
         <div class="carousel-inner">
-          <!-- Testimonial Item 1 -->
+          <!-- Testimonial 1 -->
           <div class="carousel-item active">
             <blockquote class="blockquote text-center">
-              <p class="mb-0">"[Your Name] delivered exceptional work, exceeding our expectations in every way."</p>
+              <p class="mb-0">"[Your Name] delivered exceptional work, exceeding our expectations."</p>
               <footer class="blockquote-footer mt-2">Client Name, <cite title="Company">Company</cite></footer>
             </blockquote>
           </div>
-          <!-- Testimonial Item 2 -->
+          <!-- Testimonial 2 -->
           <div class="carousel-item">
             <blockquote class="blockquote text-center">
-              <p class="mb-0">"A true professional with unmatched skills and dedication. Our projects have never been better."</p>
+              <p class="mb-0">"A true professional with unmatched skills and dedication."</p>
               <footer class="blockquote-footer mt-2">Client Name, <cite title="Company">Company</cite></footer>
             </blockquote>
           </div>
-          <!-- Testimonial Item 3 -->
+          <!-- Testimonial 3 -->
           <div class="carousel-item">
             <blockquote class="blockquote text-center">
-              <p class="mb-0">"Innovative, reliable, and creative – [Your Name] is the expert we trust for challenging projects."</p>
+              <p class="mb-0">"Innovative, reliable, and creative – the expert we trust for challenging projects."</p>
               <footer class="blockquote-footer mt-2">Client Name, <cite title="Company">Company</cite></footer>
             </blockquote>
           </div>
@@ -476,16 +417,16 @@
     </div>
   </section>
   
-  <!-- Resume Section -->
+  <!-- --- Resume Section --- -->
   <section id="resume" class="container" data-aos="fade-up">
     <div class="text-center">
       <h2>Resume <i class="fa-solid fa-file-alt"></i></h2>
-      <p>Explore my professional journey, skills, and accomplishments. Click below to view or download my complete resume.</p>
+      <p>Explore my professional journey. Click below to view or download the complete resume.</p>
       <a href="[link-to-resume.pdf]" class="btn btn-primary" target="_blank">Download Resume</a>
     </div>
   </section>
   
-  <!-- Contact Section -->
+  <!-- --- Contact Section --- -->
   <section id="contact" class="bg-light" data-aos="fade-up">
     <div class="container">
       <h2 class="text-center">Contact Me <i class="fa-solid fa-envelope"></i></h2>
@@ -509,7 +450,7 @@
     </div>
   </section>
   
-  <!-- Footer -->
+  <!-- --- Footer --- -->
   <footer data-aos="fade-up">
     <div class="container">
       <div class="mb-3">
@@ -521,37 +462,34 @@
     </div>
   </footer>
   
-  <!-- Back to Top Button -->
+  <!-- --- Back to Top Button --- -->
   <button id="backToTop" aria-label="Back to Top"><i class="fa-solid fa-angle-up"></i></button>
   
-  <!-- Scripts -->
-  <!-- Bootstrap Bundle con Popper -->
+  <!-- --- Scripts --- -->
+  <!-- Bootstrap Bundle with Popper (defered) -->
   <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- AOS Library -->
+  <!-- AOS Library (defered) -->
   <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   
   <!-- Custom Scripts -->
   <script defer>
-    // Inizializza AOS
-    AOS.init({
-      once: true,
-      duration: 800,
-    });
+    // Initialize AOS
+    AOS.init({ once: true, duration: 800 });
     
-    // Preloader fade-out & Dark Mode persistenza
+    // Preloader fade-out & Dark Mode Persistence
     window.addEventListener('load', () => {
       const preloader = document.getElementById('preloader');
       preloader.style.opacity = '0';
       setTimeout(() => preloader.style.display = 'none', 500);
-  
-      // Imposta Dark Mode se precedentemente abilitata
+      
+      // Enable dark mode if previously set
       if (localStorage.getItem('darkMode') === 'enabled') {
         document.body.classList.add('dark-mode');
         document.getElementById('darkModeToggle').querySelector('i').classList.replace('fa-moon', 'fa-sun');
       }
     });
     
-    // Dark Mode Toggle con salvataggio in localStorage
+    // Dark Mode Toggle with localStorage persistence
     const darkModeToggle = document.getElementById('darkModeToggle');
     darkModeToggle.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
@@ -565,7 +503,7 @@
       }
     });
     
-    // Back-to-Top Button
+    // Back-to-Top Button Functionality
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
       backToTop.style.display = window.pageYOffset > 300 ? 'flex' : 'none';
@@ -587,12 +525,8 @@
     const particleCount = 150;
     class Particle {
       constructor(x, y, radius, color, speedX, speedY) {
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
-        this.color = color;
-        this.speedX = speedX;
-        this.speedY = speedY;
+        this.x = x; this.y = y; this.radius = radius;
+        this.color = color; this.speedX = speedX; this.speedY = speedY;
       }
       draw() {
         ctx.beginPath();
@@ -627,7 +561,7 @@
     }
     animateParticles();
     
-    // Effetto Typed Text
+    // Typed Text Effect
     const typedTextElement = document.querySelector('.typed-text');
     const typedPhrases = [
       "Professional. Creative. Passionate.",
@@ -662,25 +596,33 @@
     // Filter Projects Functionality
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectItems = document.querySelectorAll('.project-item');
-    
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        // Rimuove la classe active da tutti i pulsanti
+        // Remove active class from all buttons
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        
         const filterValue = btn.getAttribute('data-filter');
         projectItems.forEach(item => {
           const category = item.getAttribute('data-category');
-          if (filterValue === 'all' || category === filterValue) {
-            item.style.display = 'block';
-          } else {
-            item.style.display = 'none';
-          }
+          item.style.display = (filterValue === 'all' || category === filterValue) ? 'block' : 'none';
         });
       });
     });
   </script>
+  
+  <!-- --- Service Worker Registration for PWA (Optional) --- -->
+  <script defer>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch(err => {
+            console.log('Service Worker registration failed:', err);
+          });
+      });
+    }
+  </script>
 </body>
 </html>
- 
