@@ -2,33 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>[Your Name] Portfolio</title>
+  <meta name="description" content="Professional portfolio of [Your Name] showcasing projects, experience, and skills." />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[Your Name] | Portfolio</title>
   <!-- Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-ZXx9wmdMKP0LZIDJ2wB+qfeKFYAgANCAIzZb48Wfy4/K6+B2/N8Ivr5SH3nRA1hZ6V8+1JGocStwm+HADTEfNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
   <!-- Custom Styles -->
   <style>
-    /* Global Styles */
-    html,
+    /* Base Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-family: Arial, sans-serif;
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
       scroll-behavior: smooth;
     }
-    /* Canvas Styling */
-    #heroCanvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
+    /* Navbar */
+    .navbar {
+      background: rgba(0, 123, 255, 0.85)!important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+    .navbar-brand { font-weight: 600; }
+    .nav-link { font-size: 1rem; }
+    .nav-link:hover { color: #fff !important; }
     /* Hero Section */
     #home {
       position: relative;
@@ -36,117 +35,174 @@
       overflow: hidden;
       background: #000;
       color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    }
+    #heroCanvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
     }
     .hero-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      text-align: center;
     }
-    /* Section Padding */
-    section {
-      padding: 80px 0;
+    .hero-content h1 {
+      font-size: 3rem;
+      animation: fadeInDown 1.5s ease-out;
     }
+    .hero-content p {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+      animation: fadeInUp 1.5s ease-out;
+    }
+    /* Section Styles */
+    section { padding: 80px 0; }
+    section h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+    section h2::after {
+      content: "";
+      width: 50%;
+      height: 3px;
+      background: #007BFF;
+      position: absolute;
+      left: 25%;
+      bottom: -5px;
+    }
+    /* Fade-in Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Contact Form */
+    .contact-form input,
+    .contact-form textarea { border: 1px solid #ddd; border-radius: 0.25rem; }
+    .contact-form button { border-radius: 0.25rem; }
     /* Footer */
     footer {
       background: #f8f8f8;
       text-align: center;
       padding: 20px 0;
     }
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-      .navbar-nav {
-        text-align: center;
-      }
+    /* Back to Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 999;
     }
+    #backToTop:hover { background: #0056b3; }
   </style>
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#home">[Your Name]</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
-          <li class="nav-item"><a class="nav-link" href="#location">Where I Am</a></li>
-          <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="#home"><i class="fas fa-home"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about"><i class="fas fa-user"></i> About Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="#location"><i class="fas fa-map-marker-alt"></i> Where I Am</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resume"><i class="fas fa-briefcase"></i> Resume</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact"><i class="fas fa-envelope"></i> Contact Me</a></li>
         </ul>
       </div>
     </div>
   </nav>
-  
-  <!-- Home Section with Canvas Background -->
-  <section id="home">
+
+  <!-- Hero Section with Animated Canvas Background -->
+  <section id="home" class="d-flex align-items-center">
     <canvas id="heroCanvas"></canvas>
-    <div class="hero-content container">
-      <h1 class="display-4">Welcome to My Portfolio <span>🚀</span></h1>
-      <p class="lead">Professional. Creative. Passionate. <span>✨</span></p>
-      <a href="#about" class="btn btn-light btn-lg mt-3">Explore More</a>
+    <div class="container hero-content">
+      <h1 class="fade-in">Welcome to My Portfolio <i class="fa-solid fa-rocket"></i></h1>
+      <p class="fade-in" style="animation-delay: 0.5s;">Professional. Creative. Passionate. <i class="fa-solid fa-sparkles"></i></p>
+      <a href="#about" class="btn btn-light btn-lg fade-in" style="animation-delay: 1s;">Explore More</a>
     </div>
   </section>
-  
+
   <!-- About Me Section -->
-  <section id="about" class="container">
+  <section id="about" class="container fade-in">
     <div class="row align-items-center">
       <div class="col-md-6">
-        <h2>About Me <span>🙂</span></h2>
+        <h2>About Me <i class="fa-solid fa-face-smile"></i></h2>
         <p>
-          Hello! I’m [Your Name], a dedicated professional in the field of
-          [Your Field]. I bring creativity, skill, and passion to every project,
-          always striving for excellence and innovation.
+          Hello! I’m [Your Name], a dedicated professional in the field of [Your Field]. I blend creativity, expertise, and passion in every project to deliver innovative solutions.
         </p>
       </div>
       <div class="col-md-6">
-        <img src="https://via.placeholder.com/500x300" alt="[Your Name]" class="img-fluid rounded" />
+        <img src="https://via.placeholder.com/500x300" alt="[Your Name]" class="img-fluid rounded">
       </div>
     </div>
   </section>
-  
+
   <!-- Where I Am Section -->
-  <section id="location" class="bg-light">
-    <div class="container">
-      <h2 class="text-center">Where I Am <span>🌍</span></h2>
-      <p class="text-center">
-        Currently based in [City, Country]. I work with local and international teams to create innovative solutions.
+  <section id="location" class="bg-light fade-in">
+    <div class="container text-center">
+      <h2>Where I Am <i class="fa-solid fa-globe"></i></h2>
+      <p>
+        Based in [City, Country], I collaborate with global teams to deliver cutting-edge solutions.
       </p>
     </div>
   </section>
-  
+
   <!-- Resume Section -->
-  <section id="resume" class="container">
+  <section id="resume" class="container fade-in">
     <div class="text-center">
-      <h2>Resume <span>💼</span></h2>
+      <h2>Resume <i class="fa-solid fa-briefcase"></i></h2>
       <p>
-        Discover my professional journey, skills, and major accomplishments.
-        Click below to view or download my complete resume.
+        Explore my professional journey, skills, and accomplishments. Click below to view or download my complete resume.
       </p>
       <a href="[link-to-resume.pdf]" class="btn btn-primary" target="_blank">Download Resume</a>
     </div>
   </section>
-  
+
   <!-- Contact Me Section -->
-  <section id="contact" class="bg-light">
+  <section id="contact" class="bg-light fade-in">
     <div class="container">
-      <h2 class="text-center">Contact Me <span>✉️</span></h2>
+      <h2 class="text-center">Contact Me <i class="fa-solid fa-envelope"></i></h2>
       <p class="text-center">
-        Have any questions or proposals? Fill out the form below to get in touch.
+        Have questions or proposals? Fill out the form below to get in touch.
       </p>
       <div class="row justify-content-center">
         <div class="col-md-8">
-          <form action="mailto:your.email@example.com" method="post" enctype="text/plain" class="mt-4">
+          <form class="contact-form mt-4" action="mailto:your.email@example.com" method="post" enctype="text/plain">
             <div class="mb-3">
-              <input type="text" class="form-control" name="name" placeholder="Your Name" required />
+              <input type="text" class="form-control" name="name" placeholder="Your Name" required>
             </div>
             <div class="mb-3">
-              <input type="email" class="form-control" name="email" placeholder="Your Email" required />
+              <input type="email" class="form-control" name="email" placeholder="Your Email" required>
             </div>
             <div class="mb-3">
               <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
@@ -157,19 +213,21 @@
       </div>
     </div>
   </section>
-  
+
   <!-- Footer -->
   <footer>
     <div class="container">
       <p>&copy; 2025 [Your Name]. All rights reserved.</p>
     </div>
   </footer>
-  
+
+  <!-- Back to Top Button -->
+  <button id="backToTop"><i class="fa-solid fa-angle-up"></i></button>
+
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom Canvas Animation Script -->
+  <!-- Canvas Animation Script -->
   <script>
-    // Get the canvas and context
     const canvas = document.getElementById('heroCanvas');
     const ctx = canvas.getContext('2d');
 
@@ -181,10 +239,9 @@
     setCanvasSize();
     window.addEventListener('resize', setCanvasSize);
 
-    // Create a basic particle system animation
+    // Particle system for background animation
     const particles = [];
     const particleCount = 100;
-
     class Particle {
       constructor(x, y, radius, color, speedX, speedY) {
         this.x = x;
@@ -203,13 +260,11 @@
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
-        // Bounce off the edges
         if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
         if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
         this.draw();
       }
     }
-
     function initParticles() {
       for (let i = 0; i < particleCount; i++) {
         const radius = Math.random() * 2 + 1;
@@ -222,13 +277,34 @@
       }
     }
     initParticles();
-
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(particle => particle.update());
+      particles.forEach(p => p.update());
       requestAnimationFrame(animate);
     }
     animate();
+
+    // Back-to-top button functionality
+    const backToTopButton = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTopButton.style.display = (window.pageYOffset > 300) ? 'flex' : 'none';
+    });
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Trigger fade-in animations when sections enter the viewport
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => { appearOnScroll.observe(fader); });
   </script>
 </body>
 </html>
