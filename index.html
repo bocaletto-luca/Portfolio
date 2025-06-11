@@ -2,199 +2,233 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>[Your Name] | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>[Your Name] Portfolio</title>
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <!-- Custom Styles -->
   <style>
-    /* === RESET & BASE STYLES === */
-    * {
+    /* Global Styles */
+    html,
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #333;
+      height: 100%;
+      font-family: Arial, sans-serif;
       scroll-behavior: smooth;
     }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    
-    /* === HEADER & NAVIGATION === */
-    header {
-      background: #007BFF;
-      color: #fff;
-      padding: 20px 0;
-      position: fixed;
-      width: 100%;
+    /* Canvas Styling */
+    #heroCanvas {
+      position: absolute;
       top: 0;
-      z-index: 1000;
-    }
-    header .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    header h1 {
-      font-size: 1.5em;
-    }
-    nav {
-      display: flex;
-      gap: 20px;
-    }
-    nav a {
-      padding: 8px 16px;
-      border-radius: 4px;
-      transition: background 0.3s;
-    }
-    nav a:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
-    
-    /* === SECTIONS === */
-    section {
-      padding: 100px 20px 60px; /* extra top padding to account for fixed header */
-      max-width: 1200px;
-      margin: auto;
-    }
-    .hero {
-      background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
-      color: #fff;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 20px;
-    }
-    .hero h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
-    .btn {
-      display: inline-block;
-      background: #007BFF;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 4px;
-      transition: background 0.3s;
-      margin-top: 20px;
-    }
-    .btn:hover {
-      background: #0056b3;
-    }
-    
-    /* === FORM STYLES === */
-    form input, 
-    form textarea {
+      left: 0;
       width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 1em;
+      height: 100%;
+      z-index: 0;
     }
-    form button {
-      border: none;
-      background: #007BFF;
+    /* Hero Section */
+    #home {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      background: #000;
       color: #fff;
-      padding: 10px 20px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1em;
-    }
-    form button:hover {
-      background: #0056b3;
-    }
-    
-    /* === FOOTER === */
-    footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 20px;
-      background: #f8f8f8;
-      margin-top: 40px;
     }
-    
-    /* === RESPONSIVE === */
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    /* Section Padding */
+    section {
+      padding: 80px 0;
+    }
+    /* Footer */
+    footer {
+      background: #f8f8f8;
+      text-align: center;
+      padding: 20px 0;
+    }
+    /* Responsive Adjustments */
     @media (max-width: 768px) {
-      header .container {
-        flex-direction: column;
-      }
-      nav {
-        flex-wrap: wrap;
-        justify-content: center;
+      .navbar-nav {
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
-  <!-- === HEADER & NAVIGATION === -->
-  <header>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container">
-      <h1>[Your Name] Portfolio</h1>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About Me</a>
-        <a href="#location">Where I Am</a>
-        <a href="#resume">Resume</a>
-        <a href="#contact">Contact Me</a>
-      </nav>
+      <a class="navbar-brand" href="#home">[Your Name]</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="#location">Where I Am</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact Me</a></li>
+        </ul>
+      </div>
     </div>
-  </header>
-
-  <!-- === HOME SECTION === -->
-  <section id="home" class="hero">
-    <h2>Welcome to My Professional Portfolio</h2>
-    <p>Discover my work, experience, and skills—all in one place.</p>
-    <a href="#about" class="btn">Learn More</a>
+  </nav>
+  
+  <!-- Home Section with Canvas Background -->
+  <section id="home">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-content container">
+      <h1 class="display-4">Welcome to My Portfolio <span>🚀</span></h1>
+      <p class="lead">Professional. Creative. Passionate. <span>✨</span></p>
+      <a href="#about" class="btn btn-light btn-lg mt-3">Explore More</a>
+    </div>
   </section>
-
-  <!-- === ABOUT ME SECTION === -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      Hello! I’m [Your Name], a dedicated professional with expertise in [your field or industry]. I’m passionate about creating innovative solutions and delivering excellence in every project I undertake. My experience encompasses a broad range of skills that help me drive success in dynamic, fast-paced environments.
-    </p>
+  
+  <!-- About Me Section -->
+  <section id="about" class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h2>About Me <span>🙂</span></h2>
+        <p>
+          Hello! I’m [Your Name], a dedicated professional in the field of
+          [Your Field]. I bring creativity, skill, and passion to every project,
+          always striving for excellence and innovation.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <img src="https://via.placeholder.com/500x300" alt="[Your Name]" class="img-fluid rounded" />
+      </div>
+    </div>
   </section>
-
-  <!-- === WHERE I AM SECTION === -->
-  <section id="location">
-    <h2>Where I Am</h2>
-    <p>
-      I am currently based in [City, Country]. With a flexible approach to work, I collaborate with global teams and engage in diverse projects both locally and internationally.
-    </p>
+  
+  <!-- Where I Am Section -->
+  <section id="location" class="bg-light">
+    <div class="container">
+      <h2 class="text-center">Where I Am <span>🌍</span></h2>
+      <p class="text-center">
+        Currently based in [City, Country]. I work with local and international teams to create innovative solutions.
+      </p>
+    </div>
   </section>
-
-  <!-- === RESUME SECTION === -->
-  <section id="resume">
-    <h2>Resume</h2>
-    <p>
-      My resume reflects my professional journey with a comprehensive overview of my experience, skills, and accomplishments. Click below to view or download the complete document.
-    </p>
-    <a href="[link-to-resume.pdf]" class="btn" target="_blank">Download Resume</a>
+  
+  <!-- Resume Section -->
+  <section id="resume" class="container">
+    <div class="text-center">
+      <h2>Resume <span>💼</span></h2>
+      <p>
+        Discover my professional journey, skills, and major accomplishments.
+        Click below to view or download my complete resume.
+      </p>
+      <a href="[link-to-resume.pdf]" class="btn btn-primary" target="_blank">Download Resume</a>
+    </div>
   </section>
-
-  <!-- === CONTACT ME SECTION === -->
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p>If you'd like to get in touch, please fill out the form below.</p>
-    <form action="mailto:your.email@example.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+  
+  <!-- Contact Me Section -->
+  <section id="contact" class="bg-light">
+    <div class="container">
+      <h2 class="text-center">Contact Me <span>✉️</span></h2>
+      <p class="text-center">
+        Have any questions or proposals? Fill out the form below to get in touch.
+      </p>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <form action="mailto:your.email@example.com" method="post" enctype="text/plain" class="mt-4">
+            <div class="mb-3">
+              <input type="text" class="form-control" name="name" placeholder="Your Name" required />
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control" name="email" placeholder="Your Email" required />
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </section>
-
-  <!-- === FOOTER === -->
+  
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+    <div class="container">
+      <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+    </div>
   </footer>
+  
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom Canvas Animation Script -->
+  <script>
+    // Get the canvas and context
+    const canvas = document.getElementById('heroCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Set canvas dimensions to window size
+    function setCanvasSize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    setCanvasSize();
+    window.addEventListener('resize', setCanvasSize);
+
+    // Create a basic particle system animation
+    const particles = [];
+    const particleCount = 100;
+
+    class Particle {
+      constructor(x, y, radius, color, speedX, speedY) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.speedX = speedX;
+        this.speedY = speedY;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        // Bounce off the edges
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        this.draw();
+      }
+    }
+
+    function initParticles() {
+      for (let i = 0; i < particleCount; i++) {
+        const radius = Math.random() * 2 + 1;
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const speedX = (Math.random() - 0.5) * 1.5;
+        const speedY = (Math.random() - 0.5) * 1.5;
+        const color = 'rgba(255, 255, 255, 0.8)';
+        particles.push(new Particle(x, y, radius, color, speedX, speedY));
+      }
+    }
+    initParticles();
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(particle => particle.update());
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
 </body>
 </html>
