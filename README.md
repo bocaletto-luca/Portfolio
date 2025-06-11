@@ -36,3 +36,34 @@ This portfolio template is built with plain HTML, CSS, and JavaScript along with
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/your-username/your-portfolio-repo.git
+
+2. Customize
+
+- Open the `index.html` file in your preferred code editor.
+- Replace all placeholder content (e.g., `[Your Name]`, `[Your Field]`, `[YourURL]`, `[link-to-resume.pdf]`, `[YourImageURL]`) with your own details.
+- Update asset URLs for images, resume links, social media links, and the PWA manifest as needed.
+- Adjust project categories and modal content under the Projects section to reflect your work accurately.
+- Modify additional sections (e.g., About, Testimonials, Skills) to align with your personal branding.
+
+3. Run/Deploy
+
+- To test the template locally, simply open the `index.html` file in your web browser.
+- To fully enable features like the service worker (for PWA) and proper caching, serve the files through a web server.
+- Deploy your site on a static hosting service such as GitHub Pages, Netlify, or Vercel.
+
+4. Contribute
+
+- Feel free to fork this repository and make improvements or customizations.
+- Submit pull requests for new features, enhancements, or bug fixes.
+- All contributions are welcome to help refine and expand this portfolio template.
+
+## Additional Resources
+
+- **GSAP Documentation:** [https://greensock.com/docs/](https://greensock.com/docs/)
+- **AOS Library:** [https://michalsnik.github.io/aos/](https://michalsnik.github.io/aos/)
+- **PWA Guides:** [https://developers.google.com/web/progressive-web-apps](https://developers.google.com/web/progressive-web-apps)
+- **Bootstrap Documentation:** [https://getbootstrap.com/docs/5.3/getting-started/introduction/](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+
+## License
+
+This project is licensed under the [GPL License](LICENSE).
