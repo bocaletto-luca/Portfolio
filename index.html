@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[Your Name] | Portfolio</title>
+  <style>
+    /* === RESET & BASE STYLES === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    /* === HEADER & NAVIGATION === */
+    header {
+      background: #007BFF;
+      color: #fff;
+      padding: 20px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    header .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header h1 {
+      font-size: 1.5em;
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+    nav a {
+      padding: 8px 16px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    /* === SECTIONS === */
+    section {
+      padding: 100px 20px 60px; /* extra top padding to account for fixed header */
+      max-width: 1200px;
+      margin: auto;
+    }
+    .hero {
+      background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .hero h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    .btn {
+      display: inline-block;
+      background: #007BFF;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 4px;
+      transition: background 0.3s;
+      margin-top: 20px;
+    }
+    .btn:hover {
+      background: #0056b3;
+    }
+    
+    /* === FORM STYLES === */
+    form input, 
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+    form button {
+      border: none;
+      background: #007BFF;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    form button:hover {
+      background: #0056b3;
+    }
+    
+    /* === FOOTER === */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f8f8f8;
+      margin-top: 40px;
+    }
+    
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      header .container {
+        flex-direction: column;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- === HEADER & NAVIGATION === -->
+  <header>
+    <div class="container">
+      <h1>[Your Name] Portfolio</h1>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About Me</a>
+        <a href="#location">Where I Am</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- === HOME SECTION === -->
+  <section id="home" class="hero">
+    <h2>Welcome to My Professional Portfolio</h2>
+    <p>Discover my work, experience, and skills—all in one place.</p>
+    <a href="#about" class="btn">Learn More</a>
+  </section>
+
+  <!-- === ABOUT ME SECTION === -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hello! I’m [Your Name], a dedicated professional with expertise in [your field or industry]. I’m passionate about creating innovative solutions and delivering excellence in every project I undertake. My experience encompasses a broad range of skills that help me drive success in dynamic, fast-paced environments.
+    </p>
+  </section>
+
+  <!-- === WHERE I AM SECTION === -->
+  <section id="location">
+    <h2>Where I Am</h2>
+    <p>
+      I am currently based in [City, Country]. With a flexible approach to work, I collaborate with global teams and engage in diverse projects both locally and internationally.
+    </p>
+  </section>
+
+  <!-- === RESUME SECTION === -->
+  <section id="resume">
+    <h2>Resume</h2>
+    <p>
+      My resume reflects my professional journey with a comprehensive overview of my experience, skills, and accomplishments. Click below to view or download the complete document.
+    </p>
+    <a href="[link-to-resume.pdf]" class="btn" target="_blank">Download Resume</a>
+  </section>
+
+  <!-- === CONTACT ME SECTION === -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>If you'd like to get in touch, please fill out the form below.</p>
+    <form action="mailto:your.email@example.com" method="post" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- === FOOTER === -->
+  <footer>
+    <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+  </footer>
+</body>
+</html>
