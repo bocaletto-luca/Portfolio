@@ -2,115 +2,121 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="[Your Name]'s professional portfolio showcasing projects, experience, and skills." />
-  <meta name="keywords" content="portfolio, web developer, professional, projects" />
+  <meta name="description" content="[Your Name]'s professional portfolio showcasing projects, experience and skills." />
+  <meta name="keywords" content="portfolio, web developer, projects, skills, professional" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>[Your Name] | Portfolio</title>
   
   <!-- Bootstrap CSS -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-  <!-- FontAwesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    integrity="sha512-ZXx9wmdMKP0LZIDJ2wB+qfeKFYAgANCAIzZb48Wfy4/K6+B2/N8Ivr5SH3nRA1hZ6V8+1JGocStwm+HADTEfNw=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- FontAwesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+        integrity="sha512-ZXx9wmdMKP0LZIDJ2wB+qfeKFYAgANCAIzZb48Wfy4/K6+B2/N8Ivr5SH3nRA1hZ6V8+1JGocStwm+HADTEfNw==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
   
   <style>
-    /* CSS Variables for easy theming */
+    /* CSS Variables */
     :root {
       --primary-color: #007BFF;
+      --secondary-color: #6c757d;
+      --light-bg: #ffffff;
+      --light-text: #333;
       --dark-bg: #1a1a1a;
       --dark-text: #eaeaea;
-      --light-bg: #fff;
-      --light-text: #333;
     }
-    /* Reset & Base Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* General Reset and Base Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: var(--light-bg);
+      background: var(--light-bg);
       color: var(--light-text);
       scroll-behavior: smooth;
-      transition: background-color 0.3s, color 0.3s;
+      transition: background 0.3s, color 0.3s;
     }
     body.dark-mode {
-      background-color: var(--dark-bg);
+      background: var(--dark-bg);
       color: var(--dark-text);
     }
-    /* Navbar */
-    .navbar {
-      transition: background-color 0.3s;
-    }
-    .navbar.bg-custom {
-      background-color: rgba(0, 123, 255, 0.85) !important;
-    }
-    .nav-link:hover,
-    .navbar-brand:hover {
-      color: var(--light-bg) !important;
-    }
+    a { color: inherit; }
+    
     /* Preloader */
     #preloader {
       position: fixed;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       background: var(--light-bg);
       z-index: 9999;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.3s;
+      transition: opacity 0.5s ease;
     }
-    body.dark-mode #preloader {
-      background: var(--dark-bg);
-    }
+    body.dark-mode #preloader { background: var(--dark-bg); }
+    
+    /* Navbar */
+    .navbar { transition: background 0.3s; }
+    .navbar.bg-custom { background: rgba(0, 123, 255, 0.85) !important; }
+    .nav-link:hover,
+    .navbar-brand:hover { color: var(--light-bg) !important; }
+    
     /* Hero Section */
     #home {
       position: relative;
       height: 100vh;
       overflow: hidden;
       background: #000;
-      color: #fff;
     }
     #heroCanvas {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       z-index: 0;
     }
     .hero-content {
       position: relative;
       z-index: 2;
       text-align: center;
-      padding-top: 100px;
+      padding-top: 120px;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s forwards;
     }
     .typed-text {
       font-size: 1.5rem;
-      font-weight: 400;
+      margin-bottom: 20px;
       min-height: 40px;
+      opacity: 0;
+      animation: fadeInUp 1s forwards 0.5s;
     }
-    /* Section Styles */
-    section {
-      padding: 80px 0;
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+      z-index: 2;
     }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Sections */
+    section { padding: 80px 0; }
     section h2 {
       font-size: 2rem;
       text-align: center;
@@ -127,30 +133,54 @@
       left: 25%;
       bottom: -5px;
     }
+    /* Fade-in on Scroll */
+    .fade-in-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-in-section.visible {
+      opacity: 1;
+      transform: none;
+    }
+    
+    /* Skills Progress Bars */
+    .skill { margin-bottom: 20px; }
+    .progress { height: 20px; }
+    .progress-bar {
+      line-height: 20px;
+      transition: width 1.5s ease-in-out;
+    }
+    
+    /* Projects Cards */
+    .project-card {
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    
     /* Contact Form */
     .contact-form input,
     .contact-form textarea {
       border: 1px solid #ddd;
       border-radius: 0.25rem;
     }
+    
     /* Footer */
     footer {
-      background: #f8f8f8;
+      background: var(--light-bg);
       text-align: center;
       padding: 20px 0;
     }
-    body.dark-mode footer {
-      background: #333;
-    }
-    /* Social Media Icons */
+    body.dark-mode footer { background: var(--dark-bg); }
     footer a {
-      color: inherit;
       margin: 0 10px;
       transition: color 0.3s;
     }
-    footer a:hover {
-      color: var(--primary-color);
-    }
+    footer a:hover { color: var(--primary-color); }
+    
     /* Back to Top Button */
     #backToTop {
       position: fixed;
@@ -168,9 +198,8 @@
       cursor: pointer;
       z-index: 999;
     }
-    #backToTop:hover {
-      background: #0056b3;
-    }
+    #backToTop:hover { background: #0056b3; }
+    
     /* Dark Mode Toggle Button */
     #darkModeToggle {
       background: none;
@@ -180,32 +209,16 @@
       cursor: pointer;
       margin-right: 20px;
     }
-    /* Scroll Down Icon */
-    .scroll-down {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 2rem;
-      color: #fff;
-      cursor: pointer;
-      animation: bounce 2s infinite;
-      z-index: 2;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(-10px); }
-    }
   </style>
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="80">
   <!-- Preloader -->
   <div id="preloader">
     <div class="spinner-border text-primary" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
-
+  
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-custom fixed-top">
     <div class="container">
@@ -219,16 +232,17 @@
         <ul class="navbar-nav">
           <li class="nav-item"><a class="nav-link" href="#home"><i class="fas fa-home"></i> Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#about"><i class="fas fa-user"></i> About Me</a></li>
-          <li class="nav-item"><a class="nav-link" href="#location"><i class="fas fa-map-marker-alt"></i> Where I Am</a></li>
-          <li class="nav-item"><a class="nav-link" href="#resume"><i class="fas fa-briefcase"></i> Resume</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills"><i class="fas fa-chart-line"></i> Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects"><i class="fas fa-briefcase"></i> Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resume"><i class="fas fa-file-alt"></i> Resume</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
-
+  
   <!-- Hero Section with Canvas and Typed Text -->
-  <section id="home" class="d-flex align-items-center">
+  <section id="home">
     <canvas id="heroCanvas"></canvas>
     <div class="container hero-content">
       <h1>Welcome to My Portfolio <i class="fa-solid fa-rocket"></i></h1>
@@ -237,51 +251,170 @@
       <div class="scroll-down"><i class="fas fa-angle-down"></i></div>
     </div>
   </section>
-
-  <!-- About Me Section -->
+  
+  <!-- About Section -->
   <section id="about" class="container">
-    <div class="row align-items-center">
+    <div class="row align-items-center fade-in-section">
       <div class="col-md-6">
         <h2>About Me <i class="fa-solid fa-face-smile"></i></h2>
-        <p>
-          Hello! I’m [Your Name], a dedicated professional in [Your Field]. I blend creativity, expertise, and passion in every project to deliver innovative solutions.
-        </p>
+        <p>Hello! I’m [Your Name], a dedicated professional in [Your Field]. I blend creativity, expertise, and passion to deliver innovative solutions. I am committed to continuous learning and thrive in dynamic, challenging environments.</p>
+        <!-- Optional: Download vCard -->
+        <a href="[link-to-vcard.vcf]" class="btn btn-outline-primary mt-3">Download vCard</a>
       </div>
       <div class="col-md-6">
-        <img src="https://via.placeholder.com/500x300" alt="[Your Name]" class="img-fluid rounded" />
+        <img src="https://via.placeholder.com/500x300" alt="[Your Name]" class="img-fluid rounded" loading="lazy" />
       </div>
     </div>
   </section>
-
-  <!-- Where I Am Section -->
-  <section id="location" class="bg-light">
-    <div class="container text-center">
-      <h2>Where I Am <i class="fa-solid fa-globe"></i></h2>
-      <p>
-        Based in [City, Country], I collaborate with global teams to deliver cutting-edge solutions.
-      </p>
+  
+  <!-- Skills Section -->
+  <section id="skills" class="bg-light">
+    <div class="container">
+      <h2>Skills <i class="fa-solid fa-chart-line"></i></h2>
+      <div class="row">
+        <div class="col-md-6 fade-in-section">
+          <h4>Web Development</h4>
+          <div class="skill">
+            <div class="progress">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+            </div>
+          </div>
+          <h4>UI/UX Design</h4>
+          <div class="skill">
+            <div class="progress">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 fade-in-section">
+          <h4>JavaScript</h4>
+          <div class="skill">
+            <div class="progress">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+            </div>
+          </div>
+          <h4>React / Angular</h4>
+          <div class="skill">
+            <div class="progress">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
-
+  
+  <!-- Projects Section -->
+  <section id="projects" class="container">
+    <h2>Projects <i class="fa-solid fa-folder-open"></i></h2>
+    <div class="row">
+      <!-- Project Card 1 -->
+      <div class="col-md-4 fade-in-section">
+        <div class="card project-card mb-4">
+          <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Project 1" loading="lazy">
+          <div class="card-body">
+            <h5 class="card-title">Project One</h5>
+            <p class="card-text">Brief description of the project. Technology stack, challenges, and solution summary.</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal1">Learn More</button>
+          </div>
+        </div>
+      </div>
+      <!-- Project Card 2 -->
+      <div class="col-md-4 fade-in-section">
+        <div class="card project-card mb-4">
+          <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Project 2" loading="lazy">
+          <div class="card-body">
+            <h5 class="card-title">Project Two</h5>
+            <p class="card-text">Brief description of the project. Technology stack, challenges, and solution summary.</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal2">Learn More</button>
+          </div>
+        </div>
+      </div>
+      <!-- Project Card 3 -->
+      <div class="col-md-4 fade-in-section">
+        <div class="card project-card mb-4">
+          <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Project 3" loading="lazy">
+          <div class="card-body">
+            <h5 class="card-title">Project Three</h5>
+            <p class="card-text">Brief description of the project. Technology stack, challenges, and solution summary.</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal3">Learn More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Project Modals -->
+  <!-- Modal for Project 1 -->
+  <div class="modal fade" id="projectModal1" tabindex="-1" aria-labelledby="projectModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projectModal1Label">Project One Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Detailed description of Project One. Include features, technologies used, challenges, and outcomes.
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-primary" target="_blank">View Live</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for Project 2 -->
+  <div class="modal fade" id="projectModal2" tabindex="-1" aria-labelledby="projectModal2Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projectModal2Label">Project Two Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Detailed description of Project Two. Include features, technologies used, challenges, and outcomes.
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-primary" target="_blank">View Live</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for Project 3 -->
+  <div class="modal fade" id="projectModal3" tabindex="-1" aria-labelledby="projectModal3Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projectModal3Label">Project Three Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Detailed description of Project Three. Include features, technologies used, challenges, and outcomes.
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-primary" target="_blank">View Live</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <!-- Resume Section -->
   <section id="resume" class="container">
-    <div class="text-center">
-      <h2>Resume <i class="fa-solid fa-briefcase"></i></h2>
-      <p>
-        Explore my professional journey, skills, and accomplishments. Click below to view or download my complete resume.
-      </p>
+    <div class="text-center fade-in-section">
+      <h2>Resume <i class="fa-solid fa-file-alt"></i></h2>
+      <p>Explore my professional journey, skills, and accomplishments. Click below to view or download my complete resume.</p>
       <a href="[link-to-resume.pdf]" class="btn btn-primary" target="_blank">Download Resume</a>
     </div>
   </section>
-
+  
   <!-- Contact Section -->
   <section id="contact" class="bg-light">
     <div class="container">
-      <h2 class="text-center">Contact Me <i class="fa-solid fa-envelope"></i></h2>
-      <p class="text-center">
-        Have questions or proposals? Fill out the form below to get in touch.
-      </p>
-      <div class="row justify-content-center">
+      <h2 class="text-center fade-in-section">Contact Me <i class="fa-solid fa-envelope"></i></h2>
+      <p class="text-center fade-in-section">Have any questions or proposals? Fill out the form below to get in touch.</p>
+      <div class="row justify-content-center fade-in-section">
         <div class="col-md-8">
           <form class="contact-form mt-4" action="mailto:your.email@example.com" method="post" enctype="text/plain">
             <div class="mb-3">
@@ -299,8 +432,8 @@
       </div>
     </div>
   </section>
-
-  <!-- Footer with Social Media -->
+  
+  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="mb-3">
@@ -311,22 +444,22 @@
       <p>&copy; 2025 [Your Name]. All rights reserved.</p>
     </div>
   </footer>
-
+  
   <!-- Back to Top Button -->
   <button id="backToTop"><i class="fa-solid fa-angle-up"></i></button>
-
+  
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   
   <!-- Custom Scripts -->
   <script>
-    // Remove Preloader on page load
+    // Preloader Fade-out
     window.addEventListener('load', () => {
       const preloader = document.getElementById('preloader');
       preloader.style.opacity = '0';
       setTimeout(() => preloader.style.display = 'none', 500);
     });
-
+    
     // Dark Mode Toggle
     const darkModeToggle = document.getElementById('darkModeToggle');
     darkModeToggle.addEventListener('click', () => {
@@ -340,17 +473,17 @@
         icon.classList.add('fa-moon');
       }
     });
-
-    // Back-to-Top Button
+    
+    // Back-to-Top Button Functionality
     const backToTop = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
-      backToTop.style.display = (window.pageYOffset > 300) ? 'flex' : 'none';
+      backToTop.style.display = window.pageYOffset > 300 ? 'flex' : 'none';
     });
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    // Canvas Particle Animation for Background
+    
+    // Canvas Particle Animation
     const canvas = document.getElementById('heroCanvas');
     const ctx = canvas.getContext('2d');
     function setCanvasSize() {
@@ -359,9 +492,8 @@
     }
     setCanvasSize();
     window.addEventListener('resize', setCanvasSize);
-
     const particles = [];
-    const particleCount = 100;
+    const particleCount = 150;
     class Particle {
       constructor(x, y, radius, color, speedX, speedY) {
         this.x = x;
@@ -392,7 +524,7 @@
         const y = Math.random() * canvas.height;
         const speedX = (Math.random() - 0.5) * 1.5;
         const speedY = (Math.random() - 0.5) * 1.5;
-        const color = 'rgba(255, 255, 255, 0.8)';
+        const color = 'rgba(255, 255, 255, 0.7)';
         particles.push(new Particle(x, y, radius, color, speedX, speedY));
       }
     }
@@ -403,18 +535,15 @@
       requestAnimationFrame(animateParticles);
     }
     animateParticles();
-
-    // Typed Text Effect in Hero Section
+    
+    // Typed Text Effect
     const typedTextElement = document.querySelector('.typed-text');
     const typedPhrases = [
       "Professional. Creative. Passionate.",
       "Innovator in [Your Field].",
       "Always learning, always growing."
     ];
-    let typIndex = 0;
-    let charIndex = 0;
-    let currentPhrase = "";
-    let isDeleting = false;
+    let typIndex = 0, charIndex = 0, currentPhrase = "", isDeleting = false;
     function type() {
       if (typIndex < typedPhrases.length) {
         if (!isDeleting && charIndex <= typedPhrases[typIndex].length) {
@@ -438,6 +567,18 @@
       }
     }
     type();
+    
+    // Fade-in on Scroll via Intersection Observer
+    const faders = document.querySelectorAll('.fade-in-section');
+    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
   </script>
 </body>
 </html>
