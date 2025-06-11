@@ -2,32 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="Professional portfolio of [Your Name] showcasing projects, experience, and skills." />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="[Your Name]'s professional portfolio showcasing projects, experience, and skills." />
+  <meta name="keywords" content="portfolio, web developer, professional, projects" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>[Your Name] | Portfolio</title>
+  
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
   <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-ZXx9wmdMKP0LZIDJ2wB+qfeKFYAgANCAIzZb48Wfy4/K6+B2/N8Ivr5SH3nRA1hZ6V8+1JGocStwm+HADTEfNw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-ZXx9wmdMKP0LZIDJ2wB+qfeKFYAgANCAIzZb48Wfy4/K6+B2/N8Ivr5SH3nRA1hZ6V8+1JGocStwm+HADTEfNw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-  <!-- Custom Styles -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap"
+    rel="stylesheet"
+  />
+  
   <style>
-    /* Base Styles */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* CSS Variables for easy theming */
+    :root {
+      --primary-color: #007BFF;
+      --dark-bg: #1a1a1a;
+      --dark-text: #eaeaea;
+      --light-bg: #fff;
+      --light-text: #333;
+    }
+    /* Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Montserrat', sans-serif;
-      color: #333;
+      background-color: var(--light-bg);
+      color: var(--light-text);
       scroll-behavior: smooth;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
     }
     /* Navbar */
     .navbar {
-      background: rgba(0, 123, 255, 0.85)!important;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.3s;
     }
-    .navbar-brand { font-weight: 600; }
-    .nav-link { font-size: 1rem; }
-    .nav-link:hover { color: #fff !important; }
+    .navbar.bg-custom {
+      background-color: rgba(0, 123, 255, 0.85) !important;
+    }
+    .nav-link:hover,
+    .navbar-brand:hover {
+      color: var(--light-bg) !important;
+    }
+    /* Preloader */
+    #preloader {
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--light-bg);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s;
+    }
+    body.dark-mode #preloader {
+      background: var(--dark-bg);
+    }
     /* Hero Section */
     #home {
       position: relative;
@@ -38,26 +90,27 @@
     }
     #heroCanvas {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 0;
     }
     .hero-content {
       position: relative;
       z-index: 2;
       text-align: center;
+      padding-top: 100px;
     }
-    .hero-content h1 {
-      font-size: 3rem;
-      animation: fadeInDown 1.5s ease-out;
-    }
-    .hero-content p {
-      font-size: 1.25rem;
-      margin-bottom: 20px;
-      animation: fadeInUp 1.5s ease-out;
+    .typed-text {
+      font-size: 1.5rem;
+      font-weight: 400;
+      min-height: 40px;
     }
     /* Section Styles */
-    section { padding: 80px 0; }
+    section {
+      padding: 80px 0;
+    }
     section h2 {
       font-size: 2rem;
       text-align: center;
@@ -69,43 +122,41 @@
       content: "";
       width: 50%;
       height: 3px;
-      background: #007BFF;
+      background: var(--primary-color);
       position: absolute;
       left: 25%;
       bottom: -5px;
     }
-    /* Fade-in Animation */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
     /* Contact Form */
     .contact-form input,
-    .contact-form textarea { border: 1px solid #ddd; border-radius: 0.25rem; }
-    .contact-form button { border-radius: 0.25rem; }
+    .contact-form textarea {
+      border: 1px solid #ddd;
+      border-radius: 0.25rem;
+    }
     /* Footer */
     footer {
       background: #f8f8f8;
       text-align: center;
       padding: 20px 0;
     }
+    body.dark-mode footer {
+      background: #333;
+    }
+    /* Social Media Icons */
+    footer a {
+      color: inherit;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+    footer a:hover {
+      color: var(--primary-color);
+    }
     /* Back to Top Button */
     #backToTop {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background: #007BFF;
+      background: var(--primary-color);
       color: #fff;
       border: none;
       border-radius: 50%;
@@ -117,17 +168,51 @@
       cursor: pointer;
       z-index: 999;
     }
-    #backToTop:hover { background: #0056b3; }
+    #backToTop:hover {
+      background: #0056b3;
+    }
+    /* Dark Mode Toggle Button */
+    #darkModeToggle {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+    /* Scroll Down Icon */
+    .scroll-down {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      animation: bounce 2s infinite;
+      z-index: 2;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
   </style>
 </head>
 <body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-custom fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#home">[Your Name]</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-        aria-label="Toggle navigation">
+      <button id="darkModeToggle" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -136,39 +221,40 @@
           <li class="nav-item"><a class="nav-link" href="#about"><i class="fas fa-user"></i> About Me</a></li>
           <li class="nav-item"><a class="nav-link" href="#location"><i class="fas fa-map-marker-alt"></i> Where I Am</a></li>
           <li class="nav-item"><a class="nav-link" href="#resume"><i class="fas fa-briefcase"></i> Resume</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact"><i class="fas fa-envelope"></i> Contact Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section with Animated Canvas Background -->
+  <!-- Hero Section with Canvas and Typed Text -->
   <section id="home" class="d-flex align-items-center">
     <canvas id="heroCanvas"></canvas>
     <div class="container hero-content">
-      <h1 class="fade-in">Welcome to My Portfolio <i class="fa-solid fa-rocket"></i></h1>
-      <p class="fade-in" style="animation-delay: 0.5s;">Professional. Creative. Passionate. <i class="fa-solid fa-sparkles"></i></p>
-      <a href="#about" class="btn btn-light btn-lg fade-in" style="animation-delay: 1s;">Explore More</a>
+      <h1>Welcome to My Portfolio <i class="fa-solid fa-rocket"></i></h1>
+      <p class="typed-text"></p>
+      <a href="#about" class="btn btn-light btn-lg mt-3">Explore More</a>
+      <div class="scroll-down"><i class="fas fa-angle-down"></i></div>
     </div>
   </section>
 
   <!-- About Me Section -->
-  <section id="about" class="container fade-in">
+  <section id="about" class="container">
     <div class="row align-items-center">
       <div class="col-md-6">
         <h2>About Me <i class="fa-solid fa-face-smile"></i></h2>
         <p>
-          Hello! I’m [Your Name], a dedicated professional in the field of [Your Field]. I blend creativity, expertise, and passion in every project to deliver innovative solutions.
+          Hello! I’m [Your Name], a dedicated professional in [Your Field]. I blend creativity, expertise, and passion in every project to deliver innovative solutions.
         </p>
       </div>
       <div class="col-md-6">
-        <img src="https://via.placeholder.com/500x300" alt="[Your Name]" class="img-fluid rounded">
+        <img src="https://via.placeholder.com/500x300" alt="[Your Name]" class="img-fluid rounded" />
       </div>
     </div>
   </section>
 
   <!-- Where I Am Section -->
-  <section id="location" class="bg-light fade-in">
+  <section id="location" class="bg-light">
     <div class="container text-center">
       <h2>Where I Am <i class="fa-solid fa-globe"></i></h2>
       <p>
@@ -178,7 +264,7 @@
   </section>
 
   <!-- Resume Section -->
-  <section id="resume" class="container fade-in">
+  <section id="resume" class="container">
     <div class="text-center">
       <h2>Resume <i class="fa-solid fa-briefcase"></i></h2>
       <p>
@@ -188,8 +274,8 @@
     </div>
   </section>
 
-  <!-- Contact Me Section -->
-  <section id="contact" class="bg-light fade-in">
+  <!-- Contact Section -->
+  <section id="contact" class="bg-light">
     <div class="container">
       <h2 class="text-center">Contact Me <i class="fa-solid fa-envelope"></i></h2>
       <p class="text-center">
@@ -199,10 +285,10 @@
         <div class="col-md-8">
           <form class="contact-form mt-4" action="mailto:your.email@example.com" method="post" enctype="text/plain">
             <div class="mb-3">
-              <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+              <input type="text" class="form-control" name="name" placeholder="Your Name" required />
             </div>
             <div class="mb-3">
-              <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+              <input type="email" class="form-control" name="email" placeholder="Your Email" required />
             </div>
             <div class="mb-3">
               <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
@@ -214,9 +300,14 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Footer with Social Media -->
   <footer>
     <div class="container">
+      <div class="mb-3">
+        <a href="#" class="text-dark"><i class="fab fa-linkedin fa-lg"></i></a>
+        <a href="#" class="text-dark"><i class="fab fa-github fa-lg"></i></a>
+        <a href="#" class="text-dark"><i class="fab fa-twitter fa-lg"></i></a>
+      </div>
       <p>&copy; 2025 [Your Name]. All rights reserved.</p>
     </div>
   </footer>
@@ -226,12 +317,42 @@
 
   <!-- Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Canvas Animation Script -->
+  
+  <!-- Custom Scripts -->
   <script>
+    // Remove Preloader on page load
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      preloader.style.opacity = '0';
+      setTimeout(() => preloader.style.display = 'none', 500);
+    });
+
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const icon = darkModeToggle.querySelector('i');
+      if (document.body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    });
+
+    // Back-to-Top Button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = (window.pageYOffset > 300) ? 'flex' : 'none';
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Canvas Particle Animation for Background
     const canvas = document.getElementById('heroCanvas');
     const ctx = canvas.getContext('2d');
-
-    // Set canvas dimensions to window size
     function setCanvasSize() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -239,7 +360,6 @@
     setCanvasSize();
     window.addEventListener('resize', setCanvasSize);
 
-    // Particle system for background animation
     const particles = [];
     const particleCount = 100;
     class Particle {
@@ -277,34 +397,47 @@
       }
     }
     initParticles();
-    function animate() {
+    function animateParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach(p => p.update());
-      requestAnimationFrame(animate);
+      requestAnimationFrame(animateParticles);
     }
-    animate();
+    animateParticles();
 
-    // Back-to-top button functionality
-    const backToTopButton = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      backToTopButton.style.display = (window.pageYOffset > 300) ? 'flex' : 'none';
-    });
-    backToTopButton.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Trigger fade-in animations when sections enter the viewport
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = 'translateY(0)';
-        observer.unobserve(entry.target);
-      });
-    }, appearOptions);
-    faders.forEach(fader => { appearOnScroll.observe(fader); });
+    // Typed Text Effect in Hero Section
+    const typedTextElement = document.querySelector('.typed-text');
+    const typedPhrases = [
+      "Professional. Creative. Passionate.",
+      "Innovator in [Your Field].",
+      "Always learning, always growing."
+    ];
+    let typIndex = 0;
+    let charIndex = 0;
+    let currentPhrase = "";
+    let isDeleting = false;
+    function type() {
+      if (typIndex < typedPhrases.length) {
+        if (!isDeleting && charIndex <= typedPhrases[typIndex].length) {
+          currentPhrase = typedPhrases[typIndex].substring(0, charIndex++);
+          typedTextElement.textContent = currentPhrase;
+          setTimeout(type, 150);
+        } else if (isDeleting && charIndex >= 0) {
+          currentPhrase = typedPhrases[typIndex].substring(0, charIndex--);
+          typedTextElement.textContent = currentPhrase;
+          setTimeout(type, 100);
+        }
+        if (charIndex === typedPhrases[typIndex].length) {
+          isDeleting = true;
+          setTimeout(type, 1000);
+        }
+        if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          typIndex = (typIndex + 1) % typedPhrases.length;
+          setTimeout(type, 500);
+        }
+      }
+    }
+    type();
   </script>
 </body>
 </html>
