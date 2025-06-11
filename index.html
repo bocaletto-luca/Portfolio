@@ -2,109 +2,113 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- SEO & Social Meta Tags -->
+  <!-- SEO & Social Meta -->
   <meta name="description" content="[Your Name]'s professional portfolio showcasing projects, experience, and skills." />
-  <meta name="keywords" content="portfolio, professional, web developer, projects" />
-  <meta property="og:title" content="[Your Name] | Portfolio" />
-  <meta property="og:description" content="[Your Name]'s professional portfolio showcasing projects, experience, and skills." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="[Link-to-Your-Image]" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="[Your Name] | Portfolio" />
-  <meta name="twitter:description" content="[Your Name]'s professional portfolio showcasing projects, experience, and skills." />
-  <meta name="twitter:image" content="[Link-to-Your-Image]" />
-  
+  <meta name="keywords" content="portfolio, professional, web developer, projects, skills, testimonials" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#007BFF" />
+  <meta property="og:title" content="[Your Name] | Portfolio" />
+  <meta property="og:description" content="[Your Name]'s professional portfolio." />
+  <meta property="og:image" content="[YourImageURL]" />
+  <meta property="og:url" content="[YourURL]" />
+  <meta name="twitter:card" content="summary_large_image" />
   <title>[Your Name] | Portfolio</title>
   
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- FontAwesome -->
+  <!-- FontAwesome CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-    integrity="sha512-ZXx9wmdMKP0LZIDJ2wB+qfeKFYAgANCAIzZb48Wfy4/K6+B2/N8Ivr5SH3nRA1hZ6V8+1JGocStwm+HADTEfNw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-ZXx9wmdMKP0LZIDJ2wB+qfeKFYAgANCAIzZb48Wfy4/K6+B2/N8Ivr5SH3nRA1hZ6V8+1JGocStwm+HADTEfNw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
-  <!-- AOS CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   
-  <!-- Custom Styles -->
   <style>
-    /* CSS Variables for easy theming */
+    /* CSS Variables per agevolare la personalizzazione */
     :root {
       --primary-color: #007BFF;
+      --secondary-color: #6c757d;
+      --light-bg: #ffffff;
+      --light-text: #333333;
       --dark-bg: #1a1a1a;
       --dark-text: #eaeaea;
-      --light-bg: #fff;
-      --light-text: #333;
     }
-    /* Reset & Base Styles */
+    /* Reset e Stili di Base */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: var(--light-bg);
+      background: var(--light-bg);
       color: var(--light-text);
       scroll-behavior: smooth;
-      transition: background-color 0.3s, color 0.3s;
+      transition: background 0.3s, color 0.3s;
     }
     body.dark-mode {
-      background-color: var(--dark-bg);
+      background: var(--dark-bg);
       color: var(--dark-text);
     }
+    a { color: inherit; }
+    
     /* Preloader */
     #preloader {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       background: var(--light-bg);
-      z-index: 9999;
+      z-index: 10000;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.4s ease-out;
+      transition: opacity 0.5s ease;
     }
-    body.dark-mode #preloader {
-      background: var(--dark-bg);
-    }
+    body.dark-mode #preloader { background: var(--dark-bg); }
+
     /* Navbar */
-    .navbar {
-      transition: background-color 0.3s;
-    }
-    .navbar.bg-custom {
-      background-color: rgba(0, 123, 255, 0.85) !important;
-    }
-    .nav-link:hover, .navbar-brand:hover { color: var(--light-bg) !important; }
-    /* Dark Mode Toggle Button */
-    #darkModeToggle {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.2rem;
-      cursor: pointer;
-      margin-right: 20px;
-    }
-    /* Hero Section */
-    #home {
+    .navbar { transition: background-color 0.3s; }
+    .navbar.bg-custom { background: rgba(0, 123, 255, 0.85) !important; }
+    .nav-link:hover,
+    .navbar-brand:hover { color: var(--light-bg) !important; }
+    
+    /* Hero Section con Canvas e Typed Text */
+    #hero {
       position: relative;
       height: 100vh;
       overflow: hidden;
       background: #000;
-      color: #fff;
     }
     #heroCanvas {
-      position: absolute; top: 0; left: 0;
-      width: 100%; height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 0;
     }
     .hero-content {
       position: relative;
       z-index: 2;
       text-align: center;
-      padding-top: 100px;
+      padding-top: 120px;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s forwards;
     }
     .typed-text {
       font-size: 1.5rem;
-      font-weight: 400;
+      margin-bottom: 20px;
       min-height: 40px;
+      opacity: 0;
+      animation: fadeInUp 1s forwards 0.5s;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
     .scroll-down {
       position: absolute;
@@ -121,7 +125,8 @@
       0%, 100% { transform: translateX(-50%) translateY(0); }
       50% { transform: translateX(-50%) translateY(-10px); }
     }
-    /* Sections */
+    
+    /* Sezioni */
     section { padding: 80px 0; }
     section h2 {
       font-size: 2rem;
@@ -139,26 +144,44 @@
       left: 25%;
       bottom: -5px;
     }
+    
+    /* Skills Progress Bars */
+    .skill { margin-bottom: 20px; }
+    .progress { height: 20px; }
+    .progress-bar { line-height: 20px; transition: width 1.5s ease-in-out; }
+    
+    /* Project Cards */
+    .project-card {
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    
+    /* Testimonials Carousel (Bootstrap) */
+
     /* Contact Form */
     .contact-form input,
     .contact-form textarea {
       border: 1px solid #ddd;
       border-radius: 0.25rem;
     }
+    
     /* Footer */
     footer {
-      background: #f8f8f8;
+      background: var(--light-bg);
       text-align: center;
       padding: 20px 0;
     }
-    body.dark-mode footer { background: #333; }
+    body.dark-mode footer { background: var(--dark-bg); }
     footer a {
-      color: inherit;
       margin: 0 10px;
       transition: color 0.3s;
     }
     footer a:hover { color: var(--primary-color); }
-    /* Back-to-Top Button */
+    
+    /* Back to Top Button */
     #backToTop {
       position: fixed;
       bottom: 30px;
@@ -174,89 +197,254 @@
       justify-content: center;
       cursor: pointer;
       z-index: 999;
-      transition: background 0.3s;
     }
     #backToTop:hover { background: #0056b3; }
+    
+    /* Dark Mode Toggle Button */
+    #darkModeToggle {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-right: 20px;
+    }
   </style>
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="80">
   <!-- Preloader -->
   <div id="preloader">
     <div class="spinner-border text-primary" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
-  
+
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-custom fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-custom fixed-top" data-aos="fade-down">
     <div class="container">
-      <a class="navbar-brand" href="#home">[Your Name]</a>
+      <a class="navbar-brand" href="#hero">[Your Name]</a>
       <button id="darkModeToggle" title="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="#home"><i class="fas fa-home"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#hero"><i class="fas fa-home"></i> Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#about"><i class="fas fa-user"></i> About Me</a></li>
-          <li class="nav-item"><a class="nav-link" href="#location"><i class="fas fa-map-marker-alt"></i> Where I Am</a></li>
-          <li class="nav-item"><a class="nav-link" href="#resume"><i class="fas fa-briefcase"></i> Resume</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills"><i class="fas fa-chart-line"></i> Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects"><i class="fas fa-briefcase"></i> Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials"><i class="fas fa-comments"></i> Testimonials</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resume"><i class="fas fa-file-alt"></i> Resume</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
-  
-  <!-- Hero Section with Animated Canvas and Typed Text -->
-  <section id="home" data-aos="fade">
+
+  <!-- Hero Section with Canvas, Typed Text, and Scroll Down -->
+  <section id="hero">
     <canvas id="heroCanvas"></canvas>
-    <div class="container hero-content">
-      <h1 data-aos="fade-up">Welcome to My Portfolio <i class="fa-solid fa-rocket"></i></h1>
-      <p class="typed-text" data-aos="fade-up" data-aos-delay="300"></p>
-      <a href="#about" class="btn btn-light btn-lg mt-3" data-aos="fade-up" data-aos-delay="600">Explore More</a>
-      <div class="scroll-down" data-aos="fade-up" data-aos-delay="900"><i class="fas fa-angle-down"></i></div>
+    <div class="container hero-content" data-aos="fade-up">
+      <h1>Welcome to My Portfolio <i class="fa-solid fa-rocket"></i></h1>
+      <p class="typed-text"></p>
+      <a href="#about" class="btn btn-light btn-lg mt-3">Explore More</a>
+      <div class="scroll-down" data-aos="fade-up"><i class="fas fa-angle-down"></i></div>
     </div>
   </section>
-  
-  <!-- About Me Section -->
+
+  <!-- About Section -->
   <section id="about" class="container" data-aos="fade-up">
     <div class="row align-items-center">
       <div class="col-md-6">
         <h2>About Me <i class="fa-solid fa-face-smile"></i></h2>
-        <p>
-          Hello! I’m [Your Name], a dedicated professional in [Your Field]. I blend creativity, expertise, and passion in every project to deliver innovative solutions.
-        </p>
+        <p>Hello! I’m [Your Name], a dedicated professional in [Your Field]. I combine creativity, technical expertise, and a passion for innovation to deliver impactful solutions. I thrive in collaborative environments and continuously push the boundaries of what's possible.</p>
+        <a href="[link-to-vcard.vcf]" class="btn btn-outline-primary mt-3">Download vCard</a>
       </div>
       <div class="col-md-6">
-        <img src="https://via.placeholder.com/500x300" alt="[Your Name]" class="img-fluid rounded" loading="lazy"/>
+        <img src="https://via.placeholder.com/500x300" alt="[Your Name]" class="img-fluid rounded" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="bg-light" data-aos="fade-up">
+    <div class="container">
+      <h2>Skills <i class="fa-solid fa-chart-line"></i></h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Web Development</h4>
+          <div class="skill mb-3">
+            <div class="progress">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+            </div>
+          </div>
+          <h4>UI/UX Design</h4>
+          <div class="skill mb-3">
+            <div class="progress">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h4>JavaScript</h4>
+          <div class="skill mb-3">
+            <div class="progress">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+            </div>
+          </div>
+          <h4>React / Angular</h4>
+          <div class="skill mb-3">
+            <div class="progress">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
   
-  <!-- Where I Am Section -->
-  <section id="location" class="bg-light" data-aos="fade-up">
-    <div class="container text-center">
-      <h2>Where I Am <i class="fa-solid fa-globe"></i></h2>
-      <p>
-        Based in [City, Country]. I collaborate with global teams to deliver cutting-edge solutions.
-      </p>
-      <!-- Optional: Embed a map via iframe if desired -->
-      <!--
-      <div class="map-responsive my-4">
-        <iframe src="[Google-Map-Embed-Link]" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  <!-- Projects Section -->
+  <section id="projects" class="container" data-aos="fade-up">
+    <h2>Projects <i class="fa-solid fa-folder-open"></i></h2>
+    <div class="row">
+      <!-- Project Card 1 -->
+      <div class="col-md-4">
+        <div class="card project-card mb-4">
+          <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Project One" loading="lazy">
+          <div class="card-body">
+            <h5 class="card-title">Project One</h5>
+            <p class="card-text">Brief overview of the project with key technologies and achievements.</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal1">Learn More</button>
+          </div>
+        </div>
       </div>
-      -->
+      <!-- Project Card 2 -->
+      <div class="col-md-4">
+        <div class="card project-card mb-4">
+          <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Project Two" loading="lazy">
+          <div class="card-body">
+            <h5 class="card-title">Project Two</h5>
+            <p class="card-text">Brief overview of the project with key technologies and achievements.</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal2">Learn More</button>
+          </div>
+        </div>
+      </div>
+      <!-- Project Card 3 -->
+      <div class="col-md-4">
+        <div class="card project-card mb-4">
+          <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Project Three" loading="lazy">
+          <div class="card-body">
+            <h5 class="card-title">Project Three</h5>
+            <p class="card-text">Brief overview of the project with key technologies and achievements.</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal3">Learn More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Project Modals -->
+  <!-- Modal for Project 1 -->
+  <div class="modal fade" id="projectModal1" tabindex="-1" aria-labelledby="projectModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projectModal1Label">Project One Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Detailed overview of Project One including challenges, implemented solutions, key features, and results.
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-primary" target="_blank">View Live</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for Project 2 -->
+  <div class="modal fade" id="projectModal2" tabindex="-1" aria-labelledby="projectModal2Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projectModal2Label">Project Two Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Detailed overview of Project Two including challenges, implemented solutions, key features, and results.
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-primary" target="_blank">View Live</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal for Project 3 -->
+  <div class="modal fade" id="projectModal3" tabindex="-1" aria-labelledby="projectModal3Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projectModal3Label">Project Three Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Detailed overview of Project Three including challenges, implemented solutions, key features, and results.
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-primary" target="_blank">View Live</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="bg-light" data-aos="fade-up">
+    <div class="container">
+      <h2>Testimonials <i class="fa-solid fa-comments"></i></h2>
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- Testimonial Item 1 -->
+          <div class="carousel-item active">
+            <blockquote class="blockquote text-center">
+              <p class="mb-0">"[Your Name] delivered exceptional work, exceeding our expectations in every way."</p>
+              <footer class="blockquote-footer mt-2">Client Name, <cite title="Company">Company</cite></footer>
+            </blockquote>
+          </div>
+          <!-- Testimonial Item 2 -->
+          <div class="carousel-item">
+            <blockquote class="blockquote text-center">
+              <p class="mb-0">"A true professional with unmatched skills and dedication. Our projects have never been better."</p>
+              <footer class="blockquote-footer mt-2">Client Name, <cite title="Company">Company</cite></footer>
+            </blockquote>
+          </div>
+          <!-- Testimonial Item 3 -->
+          <div class="carousel-item">
+            <blockquote class="blockquote text-center">
+              <p class="mb-0">"Innovative, reliable, and creative – [Your Name] is the expert we trust for challenging projects."</p>
+              <footer class="blockquote-footer mt-2">Client Name, <cite title="Company">Company</cite></footer>
+            </blockquote>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
     </div>
   </section>
   
   <!-- Resume Section -->
   <section id="resume" class="container" data-aos="fade-up">
     <div class="text-center">
-      <h2>Resume <i class="fa-solid fa-briefcase"></i></h2>
-      <p>
-        Explore my professional journey, skills, and accomplishments. Click below to view or download my complete resume.
-      </p>
+      <h2>Resume <i class="fa-solid fa-file-alt"></i></h2>
+      <p>Explore my professional journey, skills, and accomplishments. Click below to view or download my complete resume.</p>
       <a href="[link-to-resume.pdf]" class="btn btn-primary" target="_blank">Download Resume</a>
     </div>
   </section>
@@ -265,17 +453,15 @@
   <section id="contact" class="bg-light" data-aos="fade-up">
     <div class="container">
       <h2 class="text-center">Contact Me <i class="fa-solid fa-envelope"></i></h2>
-      <p class="text-center">
-        Have questions or proposals? Fill out the form below to get in touch.
-      </p>
+      <p class="text-center">Have questions or proposals? Fill out the form below to get in touch.</p>
       <div class="row justify-content-center">
         <div class="col-md-8">
           <form class="contact-form mt-4" action="mailto:your.email@example.com" method="post" enctype="text/plain">
             <div class="mb-3">
-              <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+              <input type="text" class="form-control" name="name" placeholder="Your Name" required />
             </div>
             <div class="mb-3">
-              <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+              <input type="email" class="form-control" name="email" placeholder="Your Email" required />
             </div>
             <div class="mb-3">
               <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
@@ -287,8 +473,8 @@
     </div>
   </section>
   
-  <!-- Footer with Social Media Icons -->
-  <footer data-aos="fade">
+  <!-- Footer -->
+  <footer data-aos="fade-up">
     <div class="container">
       <div class="mb-3">
         <a href="#" class="text-dark"><i class="fab fa-linkedin fa-lg"></i></a>
@@ -299,27 +485,142 @@
     </div>
   </footer>
   
-  <!-- Back-to-Top Button -->
+  <!-- Back to Top Button -->
   <button id="backToTop"><i class="fa-solid fa-angle-up"></i></button>
   
   <!-- Scripts -->
-  <!-- Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- AOS JS -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
-  <script>
+  <!-- Bootstrap Bundle con Popper -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS Library -->
+  <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Custom Scripts -->
+  <script defer>
+    // Inizializza AOS
     AOS.init({
+      once: true,
       duration: 800,
-      once: true
     });
-    
-    // Remove Preloader when the page loads
+
+    // Preloader fade-out e Dark Mode persistenza
     window.addEventListener('load', () => {
       const preloader = document.getElementById('preloader');
       preloader.style.opacity = '0';
       setTimeout(() => preloader.style.display = 'none', 500);
       
-      // Check for persisted theme in localStorage
-      if (localStorage.getItem('theme') === 'dark') {
+      // Imposta Dark Mode se abilitata in precedenza
+      if (localStorage.getItem('darkMode') === 'enabled') {
         document.body.classList.add('dark-mode');
-        darkModeToggle.querySelector('i').classList.replace('fa
+        document.getElementById('darkModeToggle').querySelector('i').classList.replace('fa-moon', 'fa-sun');
+      }
+    });
+
+    // Dark Mode Toggle con salvataggio su localStorage
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const icon = darkModeToggle.querySelector('i');
+      if (document.body.classList.contains('dark-mode')) {
+        icon.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        icon.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem('darkMode', 'disabled');
+      }
+    });
+    
+    // Pulsante Back-to-Top
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTop.style.display = window.pageYOffset > 300 ? 'flex' : 'none';
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Animazione Canvas: particelle dinamiche
+    const canvas = document.getElementById('heroCanvas');
+    const ctx = canvas.getContext('2d');
+    function setCanvasSize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    setCanvasSize();
+    window.addEventListener('resize', setCanvasSize);
+    const particles = [];
+    const particleCount = 150;
+    class Particle {
+      constructor(x, y, radius, color, speedX, speedY) {
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.speedX = speedX;
+        this.speedY = speedY;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        this.draw();
+      }
+    }
+    function initParticles() {
+      for (let i = 0; i < particleCount; i++) {
+        const radius = Math.random() * 2 + 1;
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        const speedX = (Math.random() - 0.5) * 1.5;
+        const speedY = (Math.random() - 0.5) * 1.5;
+        const color = 'rgba(255, 255, 255, 0.7)';
+        particles.push(new Particle(x, y, radius, color, speedX, speedY));
+      }
+    }
+    initParticles();
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => p.update());
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+    
+    // Effetto Typed Text
+    const typedTextElement = document.querySelector('.typed-text');
+    const typedPhrases = [
+      "Professional. Creative. Passionate.",
+      "Innovator in [Your Field].",
+      "Always learning, always evolving."
+    ];
+    let typIndex = 0, charIndex = 0, currentPhrase = "", isDeleting = false;
+    function type() {
+      if (typIndex < typedPhrases.length) {
+        if (!isDeleting && charIndex <= typedPhrases[typIndex].length) {
+          currentPhrase = typedPhrases[typIndex].substring(0, charIndex++);
+          typedTextElement.textContent = currentPhrase;
+          setTimeout(type, 150);
+        } else if (isDeleting && charIndex >= 0) {
+          currentPhrase = typedPhrases[typIndex].substring(0, charIndex--);
+          typedTextElement.textContent = currentPhrase;
+          setTimeout(type, 100);
+        }
+        if (charIndex === typedPhrases[typIndex].length) {
+          isDeleting = true;
+          setTimeout(type, 1000);
+        }
+        if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          typIndex = (typIndex + 1) % typedPhrases.length;
+          setTimeout(type, 500);
+        }
+      }
+    }
+    type();
+  </script>
+</body>
+</html>
