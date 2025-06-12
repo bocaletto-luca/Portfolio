@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Tag SEO avanzati e meta tag social -->
+  <meta name="description" content="Portfolio professionale di [Your Name] con progetti, competenze ed esperienza." />
+  <meta name="keywords" content="portfolio, sviluppatore web, professionale, progetti, competenze, testimonianze" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#007BFF" />
+  <meta property="og:title" content="[Your Name] | Portfolio" />
+  <meta property="og:description" content="Portfolio professionale di [Your Name]." />
+  <meta property="og:image" content="[YourImageURL]" />
+  <meta property="og:url" content="[YourURL]" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>[Your Name] | Portfolio</title>
+  
+  <!-- Manifest PWA e icona Apple Touch -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icon.png" />
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-ZXx9wmdMKP0LZIDJ2wB+qfeKFYAgANCAIzZb48Wfy4/K6+B2/N8Ivr5SH3nRA1hZ6V8+1JGocStwm+HADTEfNw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- AOS (Animate On Scroll) CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet" />
+  
+  <!-- Stili personalizzati -->
+  <link href="style.css" rel="stylesheet" />
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="80">
+  <!-- Preloader -->
+  <div id="preloader" role="alert" aria-live="polite">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Caricamento in corso...</span>
+    </div>
+  </div>
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-custom fixed-top" data-aos="fade-down" aria-label="Navigazione principale">
+    <div class="container">
+      <a class="navbar-brand" href="#hero">[Your Name]</a>
+      <button id="darkModeToggle" title="Attiva/Disattiva modalità scura" aria-label="Attiva/Disattiva modalità scura">
+        <i class="fas fa-moon"></i>
+      </button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#hero"><i class="fas fa-home"></i> Inizio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about"><i class="fas fa-user"></i> Chi Sono</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills"><i class="fas fa-chart-line"></i> Competenze</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects"><i class="fas fa-briefcase"></i> Progetti</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials"><i class="fas fa-comments"></i> Testimonianze</a></li>
+          <li class="nav-item"><a class="nav-link" href="#resume"><i class="fas fa-file-alt"></i> Curriculum</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact"><i class="fas fa-envelope"></i> Contattami</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Hero Section -->
+  <section id="hero">
+    <canvas id="heroCanvas" aria-hidden="true"></canvas>
+    <div class="container hero-content" data-aos="fade-up">
+      <h1>Benvenuto nel mio Portfolio <i class="fa-solid fa-rocket"></i></h1>
+      <p class="typed-text"></p>
+      <a href="#about" class="btn btn-light btn-lg mt-3">Esplora</a>
+      <div class="scroll-down" data-aos="fade-up" aria-label="Scorri verso il basso"><i class="fas fa-angle-down"></i></div>
+    </div>
+  </section>
+  
+  <!-- About Section -->
+  <section id="about" class="container" data-aos="fade-up">
+    <div class="row align-items-center fade-in-section">
+      <div class="col-md-6">
+        <h2>Chi Sono <i class="fa-solid fa-face-smile"></i></h2>
+        <p>Ciao! Sono [Your Name], un professionista dedicato in [Your Field]. Combino creatività, competenze tecniche e passione per fornire soluzioni di impatto. Amo lavorare in squadra e spingere oltre i limiti del possibile.</p>
+        <a href="[link-to-vcard.vcf]" class="btn btn-outline-primary mt-3">Scarica vCard</a>
+      </div>
+      <div class="col-md-6">
+        <img src="https://via.placeholder.com/500x300" alt="[Your Name]" class="img-fluid rounded" loading="lazy" />
+      </div>
+    </div>
+  </section>
+  
+  <!-- Skills Section -->
+  <section id="skills" class="bg-light" data-aos="fade-up">
+    <div class="container">
+      <h2>Competenze <i class="fa-solid fa-chart-line"></i></h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Sviluppo Web</h4>
+          <div class="skill mb-3">
+            <div class="progress">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+            </div>
+          </div>
+          <h4>Design UI/UX</h4>
+          <div class="skill mb-3">
+            <div class="progress">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h4>JavaScript</h4>
+          <div class="skill mb-3">
+            <div class="progress">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+            </div>
+          </div>
+          <h4>React / Angular</h4>
+          <div class="skill mb-3">
+            <div class="progress">
+              <div class="progress-bar bg-primary" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Progetti Section with Filter Bar -->
+  <section id="projects" class="container" data-aos="fade-up">
+    <h2>Progetti <i class="fa-solid fa-folder-open"></i></h2>
+    <div class="filter-bar mb-4">
+      <button class="filter-btn active" data-filter="all">Tutti</button>
+      <button class="filter-btn" data-filter="web">Sviluppo Web</button>
+      <button class="filter-btn" data-filter="design">Design</button>
+      <!-- Aggiungi altri pulsanti di filtro se necessario -->
+    </div>
+    <div class="row" id="projectContainer">
+      <!-- Scheda Progetto 1 (Categoria: web) -->
+      <div class="col-md-4 project-item" data-category="web">
+        <div class="card project-card mb-4">
+          <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Progetto Uno" loading="lazy">
+          <div class="card-body">
+            <h5 class="card-title">Progetto Uno</h5>
+            <p class="card-text">Breve descrizione con tecnologie chiave e risultati.</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal1">Scopri di più</button>
+          </div>
+        </div>
+      </div>
+      <!-- Scheda Progetto 2 (Categoria: design) -->
+      <div class="col-md-4 project-item" data-category="design">
+        <div class="card project-card mb-4">
+          <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Progetto Due" loading="lazy">
+          <div class="card-body">
+            <h5 class="card-title">Progetto Due</h5>
+            <p class="card-text">Breve descrizione con tecnologie chiave e risultati.</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal2">Scopri di più</button>
+          </div>
+        </div>
+      </div>
+      <!-- Scheda Progetto 3 (Categoria: web) -->
+      <div class="col-md-4 project-item" data-category="web">
+        <div class="card project-card mb-4">
+          <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Progetto Tre" loading="lazy">
+          <div class="card-body">
+            <h5 class="card-title">Progetto Tre</h5>
+            <p class="card-text">Breve descrizione con tecnologie chiave e risultati.</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#projectModal3">Scopri di più</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Modale per Progetto 1 -->
+  <div class="modal fade" id="projectModal1" tabindex="-1" aria-labelledby="projectModal1Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projectModal1Label">Dettagli Progetto Uno</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+        </div>
+        <div class="modal-body">
+          Panoramica dettagliata di Progetto Uno – inclusi sfide, soluzioni e risultati.
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-primary" target="_blank">Visualizza online</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modale per Progetto 2 -->
+  <div class="modal fade" id="projectModal2" tabindex="-1" aria-labelledby="projectModal2Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projectModal2Label">Dettagli Progetto Due</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+        </div>
+        <div class="modal-body">
+          Panoramica dettagliata di Progetto Due – inclusi sfide, soluzioni e risultati.
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-primary" target="_blank">Visualizza online</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modale per Progetto 3 -->
+  <div class="modal fade" id="projectModal3" tabindex="-1" aria-labelledby="projectModal3Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="projectModal3Label">Dettagli Progetto Tre</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+        </div>
+        <div class="modal-body">
+          Panoramica dettagliata di Progetto Tre – inclusi sfide, soluzioni e risultati.
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn btn-primary" target="_blank">Visualizza online</a>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Sezione Testimonianze -->
+  <section id="testimonials" class="bg-light" data-aos="fade-up">
+    <div class="container">
+      <h2>Testimonianze <i class="fa-solid fa-comments"></i></h2>
+      <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" aria-label="Carousel di testimonianze">
+        <div class="carousel-inner">
+          <!-- Testimonianza 1 -->
+          <div class="carousel-item active">
+            <blockquote class="blockquote text-center">
+              <p class="mb-0">"[Your Name] ha fornito un lavoro eccezionale, superando le nostre aspettative."</p>
+              <footer class="blockquote-footer mt-2">Nome Cliente, <cite title="Azienda">Azienda</cite></footer>
+            </blockquote>
+          </div>
+          <!-- Testimonianza 2 -->
+          <div class="carousel-item">
+            <blockquote class="blockquote text-center">
+              <p class="mb-0">"Un vero professionista con competenze e dedizione impareggiabili."</p>
+              <footer class="blockquote-footer mt-2">Nome Cliente, <cite title="Azienda">Azienda</cite></footer>
+            </blockquote>
+          </div>
+          <!-- Testimonianza 3 -->
+          <div class="carousel-item">
+            <blockquote class="blockquote text-center">
+              <p class="mb-0">"Innovativo, affidabile e creativo – l'esperto di cui ci fidiamo per progetti complessi."</p>
+              <footer class="blockquote-footer mt-2">Nome Cliente, <cite title="Azienda">Azienda</cite></footer>
+            </blockquote>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Precedente</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Successivo</span>
+        </button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Sezione Curriculum -->
+  <section id="resume" class="container" data-aos="fade-up">
+    <div class="text-center">
+      <h2>Curriculum <i class="fa-solid fa-file-alt"></i></h2>
+      <p>Esplora il mio percorso professionale. Clicca qui sotto per visualizzare o scaricare il curriculum completo.</p>
+      <a href="[link-to-resume.pdf]" class="btn btn-primary" target="_blank">Scarica Curriculum</a>
+    </div>
+  </section>
+  
+  <!-- Sezione Contatti -->
+  <section id="contact" class="bg-light" data-aos="fade-up">
+    <div class="container">
+      <h2 class="text-center">Contattami <i class="fa-solid fa-envelope"></i></h2>
+      <p class="text-center">Hai domande o proposte? Compila il modulo qui sotto per metterti in contatto.</p>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <form class="contact-form mt-4" action="mailto:your.email@example.com" method="post" enctype="text/plain">
+            <div class="mb-3">
+              <input type="text" class="form-control" name="name" placeholder="Il tuo nome" required />
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control" name="email" placeholder="La tua email" required />
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" name="message" rows="5" placeholder="Il tuo messaggio" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Invia Messaggio</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer data-aos="fade-up">
+    <div class="container">
+      <div class="mb-3">
+        <a href="#" class="text-dark"><i class="fab fa-linkedin fa-lg"></i></a>
+        <a href="#" class="text-dark"><i class="fab fa-github fa-lg"></i></a>
+        <a href="#" class="text-dark"><i class="fab fa-twitter fa-lg"></i></a>
+      </div>
+      <p>&copy; 2025 [Your Name]. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+  
+  <!-- Bottone Torna su -->
+  <button id="backToTop" aria-label="Torna su"><i class="fa-solid fa-angle-up"></i></button>
+  
+  <!-- Scripts -->
+  <!-- Bootstrap Bundle with Popper (deferred) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Libreria AOS (deferred) -->
+  <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- GSAP & ScrollTrigger (deferred) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  
+  <!-- Script personalizzati -->
+  <script defer src="main.js"></script>
+</body>
+</html>
