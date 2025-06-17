@@ -68,6 +68,6 @@ This portfolio template is built with plain HTML, CSS, and JavaScript along with
 
 This project is licensed under the [GPL License](LICENSE).
 
-#### Author: Bocaletto Luca
-#### Co-authored-by: Giovanni Rossi <elek80s@users.noreply.github.com>
-#### Co-authored-by: Luca <lucaboca82@users.noreply.github.com>
+Author: Bocaletto Luca
+Co-authored-by: Giovanni Rossi <elek80s@users.noreply.github.com>
+Co-authored-by: Luca <lucaboca82@users.noreply.github.com>
